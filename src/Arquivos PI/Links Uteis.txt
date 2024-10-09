@@ -1,0 +1,4 @@
+https://blog.cvinicius.com.br/2018/08/utilizando-localdate-localdatetime-e.html
+
+https://github.com/jbferraz/STech-TINF3M212/blob/main/src/inf3m212pj/DiasVidaExato.java
+
