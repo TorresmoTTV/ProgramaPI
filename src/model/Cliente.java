@@ -11,15 +11,19 @@ public class Cliente {
     String Usuario;
     String Senha;
 
-    public Cliente(int IDUsuario, String Nome, String Email, String Endereco, int CPF, int Telefone, String Usuario, String Senha) {
-        this.IDUsuario = IDUsuario;
-        this.Nome = Nome;
-        this.Email = Email;
-        this.Endereco = Endereco;
-        this.CPF = CPF;
-        this.Telefone = Telefone;
-        this.Usuario = Usuario;
-        this.Senha = Senha;
+    public Cliente(){
+    }
+
+    public Cliente(int iDUsuario, String nome, String email, String endereco, int cPF, int telefone, String usuario,
+            String senha) {
+        IDUsuario = iDUsuario;
+        Nome = nome;
+        Email = email;
+        Endereco = endereco;
+        CPF = cPF;
+        Telefone = telefone;
+        Usuario = usuario;
+        Senha = senha;
     }
 
     public int getIDUsuario() {
@@ -85,5 +89,5 @@ public class Cliente {
     public void setSenha(String Senha) {
         this.Senha = Senha;
     }
-
+    
 }

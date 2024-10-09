@@ -10,6 +10,9 @@ public class ProjetoOS {
     int fk_Cliente_IDUsuario;
     int fk_Tecnico_IDUsuario;
 
+    public ProjetoOS(){
+    }
+
     public ProjetoOS(int iDOs, String condicao, String descricao, String linkUnbonxing, String dataInicio,
             String dataFim, int fk_Cliente_IDUsuario, int fk_Tecnico_IDUsuario) {
         IDOs = iDOs;

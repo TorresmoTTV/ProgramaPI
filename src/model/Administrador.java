@@ -5,6 +5,9 @@ public class Administrador {
     String Senha;
     String Usuario;
 
+    public Administrador(){
+    }
+
     public Administrador(int iDAdmin, String senha, String usuario) {
         IDAdmin = iDAdmin;
         Senha = senha;

@@ -4,16 +4,19 @@ public class Tecnico {
     int IDTecnico;
     String Nome;
     int Telefone;
-    String E_mail;
+    String Email;
     int CPF;
     String Usuario;
     String Senha;
 
-    public Tecnico(int iDTecnico, String nome, int telefone, String e_mail, int cPF, String usuario, String senha) {
+    public Tecnico(){
+    }
+    
+    public Tecnico(int iDTecnico, String nome, int telefone, String email, int cPF, String usuario, String senha) {
         IDTecnico = iDTecnico;
         Nome = nome;
         Telefone = telefone;
-        E_mail = e_mail;
+        Email = email;
         CPF = cPF;
         Usuario = usuario;
         Senha = senha;
@@ -43,12 +46,12 @@ public class Tecnico {
         Telefone = telefone;
     }
 
-    public String getE_mail() {
-        return E_mail;
+    public String getEmail() {
+        return Email;
     }
 
-    public void setE_mail(String e_mail) {
-        E_mail = e_mail;
+    public void setEmail(String email) {
+        Email = email;
     }
 
     public int getCPF() {
