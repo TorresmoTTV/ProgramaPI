@@ -3,16 +3,16 @@ package model;
 public class Tecnico {
     int IDTecnico;
     String Nome;
-    int Telefone;
+    String Telefone;
     String Email;
-    int CPF;
+    String CPF;
     String Usuario;
     String Senha;
 
     public Tecnico(){
     }
     
-    public Tecnico(int iDTecnico, String nome, int telefone, String email, int cPF, String usuario, String senha) {
+    public Tecnico(int iDTecnico, String nome, String telefone, String email, String cPF, String usuario, String senha) {
         IDTecnico = iDTecnico;
         Nome = nome;
         Telefone = telefone;
@@ -38,11 +38,11 @@ public class Tecnico {
         Nome = nome;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return Telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         Telefone = telefone;
     }
 
@@ -54,11 +54,11 @@ public class Tecnico {
         Email = email;
     }
 
-    public int getCPF() {
+    public String getCPF() {
         return CPF;
     }
 
-    public void setCPF(int cPF) {
+    public void setCPF(String cPF) {
         CPF = cPF;
     }
 

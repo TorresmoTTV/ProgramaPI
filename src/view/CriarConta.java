@@ -238,7 +238,7 @@ public class CriarConta extends javax.swing.JFrame {
             
             c.setNome(jNomeCliente.getText().toUpperCase());
             c.setEmail(jEmailCliente.getText());
-            c.setCpf(jCPFCliente.getText());
+            c.setCPF(jCPFCliente.getText());
             c.setEndereco(jEndrecoCliente.getText());
             c.setTelefone(jTelefoneCliente.getText());
             c.setUsuario(jUsuarioCliente.getText());

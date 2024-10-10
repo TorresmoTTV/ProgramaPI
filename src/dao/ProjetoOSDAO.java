@@ -14,14 +14,17 @@ public class ProjetoOSDAO {
     public void cadastrarProjetoOS(ProjetoOS pVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "INSERT INTO Projeto_OrdemdeServico (Condicao, Descricao, LinkUnbonxing, DataInicio, DataFim)"
-                    + "(?,?,?,?,?)";
+            String sql = "INSERT INTO Projeto_OrdemdeServico (Condicao, Descricao, LinkUnbonxing, DataInicio, "
+                    + "DataFim, Fk_Tecnico_IDUsuario, Fk_Cliente_IDUsuario) "
+                    + "(?,?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, pVO.getCondicao());
             pst.setString(2, pVO.getDescricao());
             pst.setString(3, pVO.getLinkUnbonxing());
             pst.setString(4, pVO.getDataInicio());
             pst.setString(5, pVO.getDataFim());
+            pst.setInt(6, pVO.getFk_Tecnico_IDUsuario());
+            pst.setInt(7, pVO.getFk_Cliente_IDUsuario());
 
             pst.execute();
             System.out.println("Projeto / Ordem de Servico cadastrado com sucesso.");
@@ -46,6 +49,8 @@ public class ProjetoOSDAO {
                 p.setLinkUnbonxing(rs.getString("LinkUnbonxing"));
                 p.setDataInicio(rs.getString("DataInicio"));
                 p.setDataFim(rs.getString("DataFim"));
+                p.setFk_Tecnico_IDUsuario(rs.getInt("Fk_Tecnico_IDUsuario"));
+                p.setFk_Cliente_IDUsuario(rs.getInt("Fk_Cliente_IDUsuario"));
                 projetoOSs.add(p);
             }
         } catch (SQLException e) {
@@ -53,7 +58,8 @@ public class ProjetoOSDAO {
         }
         return projetoOSs;
     }
-//Condicao, Descricao, LinkUnbonxing, DataInicio, DataFim
+
+    // Condicao, Descricao, LinkUnbonxing, DataInicio, DataFim
     public void atualizarProjetoOS(ProjetoOS pVO) {
         try {
             Connection con = Conexao.getConexao();

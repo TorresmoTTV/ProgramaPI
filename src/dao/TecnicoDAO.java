@@ -18,9 +18,9 @@ public class TecnicoDAO {
                     + "(?, ?, ?, ?, ?, ?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, tVO.getNome());
-            pst.setInt(2, tVO.getTelefone());
+            pst.setString(2, tVO.getTelefone());
             pst.setString(3, tVO.getEmail());
-            pst.setInt(4, tVO.getCPF());
+            pst.setString(4, tVO.getCPF());
             pst.setString(5, tVO.getUsuario());
             pst.setString(6, tVO.getSenha());
         } catch (SQLException e) {
@@ -39,9 +39,9 @@ public class TecnicoDAO {
                 Tecnico t = new Tecnico();
                 t.setIDTecnico(rs.getInt("IDTecnico"));
                 t.setNome(rs.getString("Nome"));
-                t.setTelefone(rs.getInt("Telefone"));
+                t.setTelefone(rs.getString("Telefone"));
                 t.setEmail(rs.getString("Email"));
-                t.setCPF(rs.getInt("CPF"));
+                t.setCPF(rs.getString("CPF"));
                 t.setUsuario(rs.getString("Usuario"));
                 t.setSenha(rs.getString("Senha"));
                 tecnicoS.add(t);
@@ -59,9 +59,9 @@ public class TecnicoDAO {
             String sql = "UPDATE Tecnico SET Nome = ?, Telefone = ?, Email = ?, CPF = ?, Usuario = ?, Senha = ? where IDTecnico = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, tVO.getNome());
-            pst.setInt(2, tVO.getTelefone());
+            pst.setString(2, tVO.getTelefone());
             pst.setString(3, tVO.getEmail());
-            pst.setInt(4, tVO.getCPF());
+            pst.setString(4, tVO.getCPF());
             pst.setString(5, tVO.getUsuario());
             pst.setString(6, tVO.getSenha());
 
@@ -99,9 +99,9 @@ public class TecnicoDAO {
                 t = new Tecnico();
                 t.setIDTecnico(rs.getInt("IDTecnico"));
                 t.setNome(rs.getString("Nome"));
-                t.setTelefone(rs.getInt("Telefone"));
+                t.setTelefone(rs.getString("Telefone"));
                 t.setEmail(rs.getString("Email"));
-                t.setCPF(rs.getInt("CPF"));
+                t.setCPF(rs.getString("CPF"));
                 t.setUsuario(rs.getString("Usuario"));
                 t.setSenha(rs.getString("Senha"));
             }

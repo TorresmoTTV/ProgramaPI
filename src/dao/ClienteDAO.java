@@ -20,8 +20,8 @@ public class ClienteDAO {
             pst.setString(1, cVO.getNome());
             pst.setString(2, cVO.getEmail());
             pst.setString(3, cVO.getEndereco());
-            pst.setInt(4, cVO.getCPF());
-            pst.setInt(5, cVO.getTelefone());
+            pst.setString(4, cVO.getCPF());
+            pst.setString(5, cVO.getTelefone());
             pst.setString(6, cVO.getUsuario());
             pst.setString(7, cVO.getSenha());
 
@@ -46,8 +46,8 @@ public class ClienteDAO {
                 c.setNome(rs.getString("Nome"));
                 c.setEmail(rs.getString("Email"));
                 c.setEndereco(rs.getString("Endereco"));
-                c.setCPF(rs.getInt("CPF"));
-                c.setTelefone(rs.getInt("Telefone"));
+                c.setCPF(rs.getString("CPF"));
+                c.setTelefone(rs.getString("Telefone"));
                 c.setUsuario(rs.getString("Usuario"));
                 c.setSenha(rs.getString("Senha"));
                 clienteS.add(c);
@@ -67,8 +67,8 @@ public class ClienteDAO {
             pst.setString(1, cVO.getNome());
             pst.setString(2, cVO.getEmail());
             pst.setString(3, cVO.getEndereco());
-            pst.setInt(4, cVO.getCPF());
-            pst.setInt(5, cVO.getTelefone());
+            pst.setString(4, cVO.getCPF());
+            pst.setString(5, cVO.getTelefone());
             pst.setString(6, cVO.getUsuario());
             pst.setString(7, cVO.getSenha());
 
@@ -108,8 +108,8 @@ public class ClienteDAO {
                 c.setNome(rs.getString("Nome"));
                 c.setEmail(rs.getString("Email"));
                 c.setEndereco(rs.getString("Endereco"));
-                c.setCPF(rs.getInt("CPF"));
-                c.setTelefone(rs.getInt("Telefone"));
+                c.setCPF(rs.getString("CPF"));
+                c.setTelefone(rs.getString("Telefone"));
                 c.setUsuario(rs.getString("Usuario"));
                 c.setSenha(rs.getString("Senha"));
             }

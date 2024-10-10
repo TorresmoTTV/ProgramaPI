@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "src/Arquivos PI/mysql-connector-java-8.0.20.jar"
+        "src/Arquivos PI/mysql-connector-java-8.0.20.jar",
+        "src/Arquivos PI/itextpdf-5.5.4.jar"
     ]
 }

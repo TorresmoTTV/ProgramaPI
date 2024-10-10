@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+
 import servicos.GeradorRelatorioPDF;
 
 /**
@@ -34,20 +36,17 @@ public class Administrador extends javax.swing.JFrame {
         jTableTecnicos = new javax.swing.JTable();
         jScrollPaneListaProjeto = new javax.swing.JScrollPane();
         jTableOrdemdeServico = new javax.swing.JTable();
-        jScrollPaneTecnico = new javax.swing.JScrollPane();
-        jTableProjetos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuAdministrador = new javax.swing.JMenuBar();
         jMenuCriarAdministrador = new javax.swing.JMenu();
         jMenuItemCriarTecnico = new javax.swing.JMenuItem();
-        jMenuItemCriarProjeto = new javax.swing.JMenuItem();
+        jMenuItemCriarProjetoOS = new javax.swing.JMenuItem();
         jMenuCriarRelatorio = new javax.swing.JMenu();
-        jMenuItemRelatorioOS = new javax.swing.JMenuItem();
+        jMenuItemRelatorioPOS = new javax.swing.JMenuItem();
         jMenuEditarAdministrador = new javax.swing.JMenu();
         jMenuItemEditarTécnico = new javax.swing.JMenuItem();
-        jMenuItemEditarProjeto = new javax.swing.JMenuItem();
+        jMenuItemEditarProjetoOS = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,20 +65,20 @@ public class Administrador extends javax.swing.JFrame {
 
         jTableOrdemdeServico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Data de Criação", "Condição", "Descrição", "Técnico"
+                "ID", "Data de Criação", "Data de Finalização", "Condição", "Descrição", "Técnico", "Cliente"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -97,24 +96,11 @@ public class Administrador extends javax.swing.JFrame {
             jTableOrdemdeServico.getColumnModel().getColumn(2).setResizable(false);
             jTableOrdemdeServico.getColumnModel().getColumn(3).setResizable(false);
             jTableOrdemdeServico.getColumnModel().getColumn(4).setResizable(false);
+            jTableOrdemdeServico.getColumnModel().getColumn(5).setResizable(false);
+            jTableOrdemdeServico.getColumnModel().getColumn(6).setResizable(false);
         }
 
-        jTableProjetos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPaneTecnico.setViewportView(jTableProjetos);
-
-        jLabel1.setText("Ordem de Serviços:");
-
-        jLabel2.setText("Projetos:");
+        jLabel1.setText("Projeto/Ordem de Serviços:");
 
         jLabel3.setText("Técnicos:");
 
@@ -123,44 +109,35 @@ public class Administrador extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addGap(33, 33, 33)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+                            .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(313, 313, 313)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(353, 353, 353)
+                                .addComponent(jLabel3)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel1)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(jScrollPaneTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(86, 86, 86))))
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         jMenuCriarAdministrador.setText("Criar");
@@ -173,18 +150,23 @@ public class Administrador extends javax.swing.JFrame {
         });
         jMenuCriarAdministrador.add(jMenuItemCriarTecnico);
 
-        jMenuItemCriarProjeto.setText("Criar Projeto");
-        jMenuCriarAdministrador.add(jMenuItemCriarProjeto);
+        jMenuItemCriarProjetoOS.setText("Criar Projeto/Ordem de Serviço");
+        jMenuItemCriarProjetoOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCriarProjetoOSActionPerformed(evt);
+            }
+        });
+        jMenuCriarAdministrador.add(jMenuItemCriarProjetoOS);
 
         jMenuCriarRelatorio.setText("Criar Relatórios");
 
-        jMenuItemRelatorioOS.setText("Ordem de Serviço");
-        jMenuItemRelatorioOS.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemRelatorioPOS.setText("Projeto/OrdemDeServico");
+        jMenuItemRelatorioPOS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemRelatorioOSActionPerformed(evt);
+                jMenuItemRelatorioPOSActionPerformed(evt);
             }
         });
-        jMenuCriarRelatorio.add(jMenuItemRelatorioOS);
+        jMenuCriarRelatorio.add(jMenuItemRelatorioPOS);
 
         jMenuCriarAdministrador.add(jMenuCriarRelatorio);
 
@@ -195,8 +177,8 @@ public class Administrador extends javax.swing.JFrame {
         jMenuItemEditarTécnico.setText("Editar/Deletar Técnico");
         jMenuEditarAdministrador.add(jMenuItemEditarTécnico);
 
-        jMenuItemEditarProjeto.setText("Editar/Deletar Projeto");
-        jMenuEditarAdministrador.add(jMenuItemEditarProjeto);
+        jMenuItemEditarProjetoOS.setText("Editar/Deletar Projeto/Ordem de Serviço");
+        jMenuEditarAdministrador.add(jMenuItemEditarProjetoOS);
 
         jMenuAdministrador.add(jMenuEditarAdministrador);
 
@@ -220,11 +202,20 @@ public class Administrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemCriarTecnicoActionPerformed
 
-    private void jMenuItemRelatorioOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioOSActionPerformed
+    private void jMenuItemRelatorioPOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioPOSActionPerformed
         // TODO add your handling code here:
-        GeradorRelatorioPDF GerarOS = new GeradorRelatorioPDF();
-        GerarOS.gerarRelatorioOrdemDeServico(ordens);
-    }//GEN-LAST:event_jMenuItemRelatorioOSActionPerformed
+        try {
+            GeradorRelatorioPDF GerarPOS = new GeradorRelatorioPDF();
+            GerarPOS.gerarRelatorioProjetoOS();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenuItemRelatorioPOSActionPerformed
+
+    private void jMenuItemCriarProjetoOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCriarProjetoOSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemCriarProjetoOSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,23 +254,20 @@ public class Administrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuAdministrador;
     private javax.swing.JMenu jMenuCriarAdministrador;
     private javax.swing.JMenu jMenuCriarRelatorio;
     private javax.swing.JMenu jMenuEditarAdministrador;
-    private javax.swing.JMenuItem jMenuItemCriarProjeto;
+    private javax.swing.JMenuItem jMenuItemCriarProjetoOS;
     private javax.swing.JMenuItem jMenuItemCriarTecnico;
-    private javax.swing.JMenuItem jMenuItemEditarProjeto;
+    private javax.swing.JMenuItem jMenuItemEditarProjetoOS;
     private javax.swing.JMenuItem jMenuItemEditarTécnico;
-    private javax.swing.JMenuItem jMenuItemRelatorioOS;
+    private javax.swing.JMenuItem jMenuItemRelatorioPOS;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPaneListaProjeto;
-    private javax.swing.JScrollPane jScrollPaneTecnico;
     private javax.swing.JTable jTableOrdemdeServico;
-    private javax.swing.JTable jTableProjetos;
     private javax.swing.JTable jTableTecnicos;
     // End of variables declaration//GEN-END:variables
 }

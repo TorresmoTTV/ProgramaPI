@@ -6,15 +6,15 @@ public class Cliente {
     String Nome;
     String Email;
     String Endereco;
-    int CPF;
-    int Telefone;
+    String CPF;
+    String Telefone;
     String Usuario;
     String Senha;
 
     public Cliente(){
     }
 
-    public Cliente(int iDUsuario, String nome, String email, String endereco, int cPF, int telefone, String usuario,
+    public Cliente(int iDUsuario, String nome, String email, String endereco, String cPF, String telefone, String usuario,
             String senha) {
         IDUsuario = iDUsuario;
         Nome = nome;
@@ -58,19 +58,19 @@ public class Cliente {
         this.Endereco = Endereco;
     }
 
-    public int getCPF() {
+    public String getCPF() {
         return CPF;
     }
 
-    public void setCPF(int CPF) {
+    public void setCPF(String CPF) {
         this.CPF = CPF;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return Telefone;
     }
 
-    public void setTelefone(int Telefone) {
+    public void setTelefone(String Telefone) {
         this.Telefone = Telefone;
     }
 
