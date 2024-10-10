@@ -1,14 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servicos;
 
-/**
- *
- * @author 182310076
- */
 public class ServicosFactory {
-    
+    private static AdministradorServico AdministradorS = new AdministradorServico();
+
+    public static AdministradorServico getAdministradorServico(){
+        return AdministradorS;
+    }
+
+    private static ClienteServico ClienteS = new ClienteServico();
+
+    public static ClienteServico getClienteServico(){
+        return ClienteS;
+    }
+
+    private static TecnicoServico TecnicoS = new TecnicoServico();
+
+    public static TecnicoServico getTecnicoServico(){
+        return TecnicoS;
+    }
+
+    private static ProjetoOSServico ProjetoOSServicoS = new ProjetoOSServico();
+
+    public static ProjetoOSServico getProjetoOSServico(){
+        return ProjetoOSServicoS;
+    }
 }

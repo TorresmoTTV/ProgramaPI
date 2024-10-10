@@ -52,13 +52,20 @@ public class TecnicoDAO {
         }
         return tecnicoS;
     }
-
+//(Nome, Telefone, Email, CPF, Usuario, Senha)
     public void atualizarTecnico(Tecnico tVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "";
+            String sql = "UPDATE Tecnico SET Nome = ?, Telefone = ?, Email = ?, CPF = ?, Usuario = ?, Senha = ? where IDTecnico = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            // arrumar
+            pst.setString(1, tVO.getNome());
+            pst.setInt(2, tVO.getTelefone());
+            pst.setString(3, tVO.getEmail());
+            pst.setInt(4, tVO.getCPF());
+            pst.setString(5, tVO.getUsuario());
+            pst.setString(6, tVO.getSenha());
+
+            pst.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao editar Tecnico.\n"
                     + e.getMessage());
@@ -83,14 +90,20 @@ public class TecnicoDAO {
 
         try {
             Connection con = Conexao.getConexao();
-            String sql = "";
+            String sql = "SELECT * FROM Tecnico WHERE IDTecnico = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, IDTecnico);
             ResultSet rs = pst.executeQuery();
-
+//(Nome, Telefone, Email, CPF, Usuario, Senha)
             if (rs.next()) {
                 t = new Tecnico();
-                // sets
+                t.setIDTecnico(rs.getInt("IDTecnico"));
+                t.setNome(rs.getString("Nome"));
+                t.setTelefone(rs.getInt("Telefone"));
+                t.setEmail(rs.getString("Email"));
+                t.setCPF(rs.getInt("CPF"));
+                t.setUsuario(rs.getString("Usuario"));
+                t.setSenha(rs.getString("Senha"));
             }
         } catch (SQLException e) {
             System.out.println("Erro ao buscar o Tecnico.\n"
