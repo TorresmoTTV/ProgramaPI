@@ -40,13 +40,10 @@ public class Administrador extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jMenuAdministrador = new javax.swing.JMenuBar();
         jMenuCriarAdministrador = new javax.swing.JMenu();
-        jMenuItemCriarTecnico = new javax.swing.JMenuItem();
-        jMenuItemCriarProjetoOS = new javax.swing.JMenuItem();
+        jMenuItemTecnico = new javax.swing.JMenuItem();
+        jMenuItemProjetoOS = new javax.swing.JMenuItem();
         jMenuCriarRelatorio = new javax.swing.JMenu();
         jMenuItemRelatorioPOS = new javax.swing.JMenuItem();
-        jMenuEditarAdministrador = new javax.swing.JMenu();
-        jMenuItemEditarTécnico = new javax.swing.JMenuItem();
-        jMenuItemEditarProjetoOS = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -140,23 +137,23 @@ public class Administrador extends javax.swing.JFrame {
                 .addContainerGap(70, Short.MAX_VALUE))
         );
 
-        jMenuCriarAdministrador.setText("Criar");
+        jMenuCriarAdministrador.setText("Criar/Editar/Deletar");
 
-        jMenuItemCriarTecnico.setText("Criar Técnico");
-        jMenuItemCriarTecnico.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemTecnico.setText("Criar/Editar/Deletar Técnico");
+        jMenuItemTecnico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCriarTecnicoActionPerformed(evt);
+                jMenuItemTecnicoActionPerformed(evt);
             }
         });
-        jMenuCriarAdministrador.add(jMenuItemCriarTecnico);
+        jMenuCriarAdministrador.add(jMenuItemTecnico);
 
-        jMenuItemCriarProjetoOS.setText("Criar Projeto/Ordem de Serviço");
-        jMenuItemCriarProjetoOS.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemProjetoOS.setText("Criar/Editar/Deletar Projeto/Ordem de Serviço");
+        jMenuItemProjetoOS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCriarProjetoOSActionPerformed(evt);
+                jMenuItemProjetoOSActionPerformed(evt);
             }
         });
-        jMenuCriarAdministrador.add(jMenuItemCriarProjetoOS);
+        jMenuCriarAdministrador.add(jMenuItemProjetoOS);
 
         jMenuCriarRelatorio.setText("Criar Relatórios");
 
@@ -171,16 +168,6 @@ public class Administrador extends javax.swing.JFrame {
         jMenuCriarAdministrador.add(jMenuCriarRelatorio);
 
         jMenuAdministrador.add(jMenuCriarAdministrador);
-
-        jMenuEditarAdministrador.setText("Editar/Deletar");
-
-        jMenuItemEditarTécnico.setText("Editar/Deletar Técnico");
-        jMenuEditarAdministrador.add(jMenuItemEditarTécnico);
-
-        jMenuItemEditarProjetoOS.setText("Editar/Deletar Projeto/Ordem de Serviço");
-        jMenuEditarAdministrador.add(jMenuItemEditarProjetoOS);
-
-        jMenuAdministrador.add(jMenuEditarAdministrador);
 
         setJMenuBar(jMenuAdministrador);
 
@@ -198,9 +185,11 @@ public class Administrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemCriarTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCriarTecnicoActionPerformed
+    private void jMenuItemTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTecnicoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemCriarTecnicoActionPerformed
+        CriarContaTecnico CCT = new CriarContaTecnico();
+        CCT.setVisible(true);
+    }//GEN-LAST:event_jMenuItemTecnicoActionPerformed
 
     private void jMenuItemRelatorioPOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioPOSActionPerformed
         // TODO add your handling code here:
@@ -213,9 +202,9 @@ public class Administrador extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemRelatorioPOSActionPerformed
 
-    private void jMenuItemCriarProjetoOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCriarProjetoOSActionPerformed
+    private void jMenuItemProjetoOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProjetoOSActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemCriarProjetoOSActionPerformed
+    }//GEN-LAST:event_jMenuItemProjetoOSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,12 +247,9 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuAdministrador;
     private javax.swing.JMenu jMenuCriarAdministrador;
     private javax.swing.JMenu jMenuCriarRelatorio;
-    private javax.swing.JMenu jMenuEditarAdministrador;
-    private javax.swing.JMenuItem jMenuItemCriarProjetoOS;
-    private javax.swing.JMenuItem jMenuItemCriarTecnico;
-    private javax.swing.JMenuItem jMenuItemEditarProjetoOS;
-    private javax.swing.JMenuItem jMenuItemEditarTécnico;
+    private javax.swing.JMenuItem jMenuItemProjetoOS;
     private javax.swing.JMenuItem jMenuItemRelatorioPOS;
+    private javax.swing.JMenuItem jMenuItemTecnico;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPaneListaProjeto;

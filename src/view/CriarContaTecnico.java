@@ -26,7 +26,6 @@ public class CriarContaTecnico extends javax.swing.JFrame {
         jNomeTecnico.setText("");
         jEmailTecnico.setText("");
         jCPFTecnico.setText("");
-        jEndrecoTecnico.setText("");
         jTelefoneTecnico.setText("");
         jUsuarioTecnico.setText("");
         jSenhaTecnico.setText("");
@@ -63,13 +62,14 @@ public class CriarContaTecnico extends javax.swing.JFrame {
         jUsuarioTecnico = new javax.swing.JTextField();
         jSenhaTecnico = new javax.swing.JPasswordField();
         jBVoltarPaginaAdministrador = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jEndrecoTecnico = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableCriarEditarTecnico = new javax.swing.JTable();
+        jBEditarContaTecnico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("Criar conta");
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel1.setText("Criar/Editar Conta Técnico:");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setText("Nome:");
@@ -96,7 +96,7 @@ public class CriarContaTecnico extends javax.swing.JFrame {
             }
         });
 
-        jBExcluirTecnico.setText("Excluir");
+        jBExcluirTecnico.setText("Excluir Conta");
         jBExcluirTecnico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBExcluirTecnicoActionPerformed(evt);
@@ -116,8 +116,48 @@ public class CriarContaTecnico extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel8.setText("Endereço:");
+        jTableCriarEditarTecnico.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Nome", "Email", "CPF", "Telefone", "Usuário"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableCriarEditarTecnico);
+        if (jTableCriarEditarTecnico.getColumnModel().getColumnCount() > 0) {
+            jTableCriarEditarTecnico.getColumnModel().getColumn(0).setResizable(false);
+            jTableCriarEditarTecnico.getColumnModel().getColumn(1).setResizable(false);
+            jTableCriarEditarTecnico.getColumnModel().getColumn(2).setResizable(false);
+            jTableCriarEditarTecnico.getColumnModel().getColumn(3).setResizable(false);
+            jTableCriarEditarTecnico.getColumnModel().getColumn(4).setResizable(false);
+            jTableCriarEditarTecnico.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        jBEditarContaTecnico.setText("Editar Conta");
+        jBEditarContaTecnico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEditarContaTecnicoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -127,54 +167,60 @@ public class CriarContaTecnico extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jBExcluirTecnico)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jBCriarContaTecnico)
-                                        .addGap(137, 137, 137)))
-                                .addGap(193, 193, 193)
-                                .addComponent(jBVoltarPaginaAdministrador))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSenhaTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(112, Short.MAX_VALUE))
+                                .addComponent(jSenhaTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jUsuarioTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTelefoneTecnico))))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jUsuarioTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(13, 13, 13)
+                                .addComponent(jBCriarContaTecnico)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jNomeTecnico, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                    .addComponent(jEmailTecnico, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                    .addComponent(jCPFTecnico)
-                                    .addComponent(jTelefoneTecnico)
-                                    .addComponent(jEndrecoTecnico))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addComponent(jBEditarContaTecnico)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBExcluirTecnico)
+                                .addGap(295, 295, 295)
+                                .addComponent(jBVoltarPaginaAdministrador))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(30, 30, 30)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jEmailTecnico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                        .addComponent(jCPFTecnico, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jNomeTecnico)))))
+                        .addContainerGap(112, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(388, 388, 388)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(21, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel1)
-                .addGap(61, 61, 61)
+                .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jNomeTecnico))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jEmailTecnico))
@@ -182,11 +228,7 @@ public class CriarContaTecnico extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jCPFTecnico))
-                .addGap(5, 5, 5)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jEndrecoTecnico))
-                .addGap(7, 7, 7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTelefoneTecnico))
@@ -198,12 +240,18 @@ public class CriarContaTecnico extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSenhaTecnico)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(76, 76, 76)
+                .addGap(104, 104, 104)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBExcluirTecnico)
                     .addComponent(jBVoltarPaginaAdministrador)
-                    .addComponent(jBCriarContaTecnico))
+                    .addComponent(jBCriarContaTecnico)
+                    .addComponent(jBEditarContaTecnico))
                 .addGap(47, 47, 47))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(112, 112, 112)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(118, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,8 +270,6 @@ public class CriarContaTecnico extends javax.swing.JFrame {
 
     private void jBVoltarPaginaAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarPaginaAdministradorActionPerformed
         // TODO add your handling code here:
-        Administrador Administrador = new Administrador();
-        Administrador.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jBVoltarPaginaAdministradorActionPerformed
 
@@ -250,6 +296,10 @@ public class CriarContaTecnico extends javax.swing.JFrame {
     private void jCPFTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCPFTecnicoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCPFTecnicoActionPerformed
+
+    private void jBEditarContaTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarContaTecnicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBEditarContaTecnicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,11 +339,11 @@ public class CriarContaTecnico extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCriarContaTecnico;
+    private javax.swing.JButton jBEditarContaTecnico;
     private javax.swing.JButton jBExcluirTecnico;
     private javax.swing.JButton jBVoltarPaginaAdministrador;
     private javax.swing.JTextField jCPFTecnico;
     private javax.swing.JTextField jEmailTecnico;
-    private javax.swing.JTextField jEndrecoTecnico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -301,11 +351,12 @@ public class CriarContaTecnico extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jNomeTecnico;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPasswordField jSenhaTecnico;
+    private javax.swing.JTable jTableCriarEditarTecnico;
     private javax.swing.JTextField jTelefoneTecnico;
     private javax.swing.JTextField jUsuarioTecnico;
     // End of variables declaration//GEN-END:variables

@@ -6,23 +6,23 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenuCriarAdministrador">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Criar"/>
+            <Property name="text" type="java.lang.String" value="Criar/Editar/Deletar"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCriarTecnico">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTecnico">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Criar T&#xe9;cnico"/>
+                <Property name="text" type="java.lang.String" value="Criar/Editar/Deletar T&#xe9;cnico"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemCriarTecnicoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemTecnicoActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCriarProjetoOS">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemProjetoOS">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Criar Projeto/Ordem de Servi&#xe7;o"/>
+                <Property name="text" type="java.lang.String" value="Criar/Editar/Deletar Projeto/Ordem de Servi&#xe7;o"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemCriarProjetoOSActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemProjetoOSActionPerformed"/>
               </Events>
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="jMenuCriarRelatorio">
@@ -40,23 +40,6 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenuEditarAdministrador">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Editar/Deletar"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEditarT&#xe9;cnico">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Editar/Deletar T&#xe9;cnico"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEditarProjetoOS">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Editar/Deletar Projeto/Ordem de Servi&#xe7;o"/>
-              </Properties>
-            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
