@@ -6,8 +6,14 @@
 package view;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
+import model.ProjetoOS;
+import model.Tecnico;
 import servicos.GeradorRelatorioPDF;
+import servicos.ProjetoOSServico;
+import servicos.ServicosFactory;
+import servicos.TecnicoServico;
 
 /**
  *
@@ -20,6 +26,50 @@ public class Administrador extends javax.swing.JFrame {
      */
     public Administrador() {
         initComponents();
+        addRowToTablePOS();
+        addRowToTableTEC();
+    }
+
+    private void addRowToTablePOS() {
+        //pega a modelagem da tabela na interface gráfica
+        DefaultTableModel model = (DefaultTableModel) jTablePOS.getModel();
+        model.getDataVector().removeAllElements();// remove todas as linhas
+        model.fireTableDataChanged();
+        // cria vetor de 7 posições que corresponde as colunas da tabela
+        Object rowData[] = new Object[8];
+        ProjetoOSServico posS = ServicosFactory.getProjetoOSServico();
+        // percorrer lista e popula vetor e add vetor a tabela
+        for (ProjetoOS ProjetoOS : posS.listaProjetoOSs()) {
+            rowData[0] = ProjetoOS.getIDOs();
+            rowData[1] = ProjetoOS.getCondicao();
+            rowData[2] = ProjetoOS.getDescricao();
+            rowData[3] = ProjetoOS.getLinkUnboxing();
+            rowData[4] = ProjetoOS.getDataInicio();
+            rowData[5] = ProjetoOS.getDataFim();
+            rowData[6] = ProjetoOS.getfk_Cliente_IDUsuario();
+            rowData[7] = ProjetoOS.getfk_Tecnico_IDTecnico();
+            model.addRow(rowData);
+        }
+    }
+
+    private void addRowToTableTEC() {
+        //pega a modelagem da tabela na interface gráfica
+        DefaultTableModel model = (DefaultTableModel) jTableTecnicos.getModel();
+        model.getDataVector().removeAllElements();// remove todas as linhas
+        model.fireTableDataChanged();
+        // cria vetor de 7 posições que corresponde as colunas da tabela
+        Object rowData[] = new Object[6];
+        TecnicoServico tec = ServicosFactory.getTecnicoServico();
+        // percorrer lista e popula vetor e add vetor a tabela
+        for (Tecnico tecnicoS : tec.listaTecnicos()) {
+            rowData[0] = tecnicoS.getIDTecnico();
+            rowData[1] = tecnicoS.getNome();
+            rowData[2] = tecnicoS.getTelefone();
+            rowData[3] = tecnicoS.getEmail();
+            rowData[4] = tecnicoS.getCPF();
+            rowData[5] = tecnicoS.getUsuarioTec();
+            model.addRow(rowData);
+        }
     }
 
     /**
@@ -35,7 +85,7 @@ public class Administrador extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableTecnicos = new javax.swing.JTable();
         jScrollPaneListaProjeto = new javax.swing.JScrollPane();
-        jTableOrdemdeServico = new javax.swing.JTable();
+        jTablePOS = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuAdministrador = new javax.swing.JMenuBar();
@@ -49,33 +99,20 @@ public class Administrador extends javax.swing.JFrame {
 
         jTableTecnicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTableTecnicos);
-
-        jTableOrdemdeServico.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Data de Criação", "Data de Finalização", "Condição", "Descrição", "Técnico", "Cliente"
+                "ID Tecnico", "Nome", "Telefone", "Email", "CPF", "UsuarioTec"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -86,15 +123,52 @@ public class Administrador extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPaneListaProjeto.setViewportView(jTableOrdemdeServico);
-        if (jTableOrdemdeServico.getColumnModel().getColumnCount() > 0) {
-            jTableOrdemdeServico.getColumnModel().getColumn(0).setResizable(false);
-            jTableOrdemdeServico.getColumnModel().getColumn(1).setResizable(false);
-            jTableOrdemdeServico.getColumnModel().getColumn(2).setResizable(false);
-            jTableOrdemdeServico.getColumnModel().getColumn(3).setResizable(false);
-            jTableOrdemdeServico.getColumnModel().getColumn(4).setResizable(false);
-            jTableOrdemdeServico.getColumnModel().getColumn(5).setResizable(false);
-            jTableOrdemdeServico.getColumnModel().getColumn(6).setResizable(false);
+        jScrollPane1.setViewportView(jTableTecnicos);
+        if (jTableTecnicos.getColumnModel().getColumnCount() > 0) {
+            jTableTecnicos.getColumnModel().getColumn(0).setResizable(false);
+            jTableTecnicos.getColumnModel().getColumn(1).setResizable(false);
+            jTableTecnicos.getColumnModel().getColumn(2).setResizable(false);
+            jTableTecnicos.getColumnModel().getColumn(3).setResizable(false);
+            jTableTecnicos.getColumnModel().getColumn(4).setResizable(false);
+            jTableTecnicos.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        jTablePOS.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Data de Criação", "Data de Finalização", "Condição", "Descrição", "LinkUnboxing", "Técnico", "Cliente"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPaneListaProjeto.setViewportView(jTablePOS);
+        if (jTablePOS.getColumnModel().getColumnCount() > 0) {
+            jTablePOS.getColumnModel().getColumn(0).setResizable(false);
+            jTablePOS.getColumnModel().getColumn(1).setResizable(false);
+            jTablePOS.getColumnModel().getColumn(2).setResizable(false);
+            jTablePOS.getColumnModel().getColumn(3).setResizable(false);
+            jTablePOS.getColumnModel().getColumn(4).setResizable(false);
+            jTablePOS.getColumnModel().getColumn(5).setResizable(false);
+            jTablePOS.getColumnModel().getColumn(6).setResizable(false);
+            jTablePOS.getColumnModel().getColumn(7).setResizable(false);
         }
 
         jLabel1.setText("Projeto/Ordem de Serviços:");
@@ -204,6 +278,8 @@ public class Administrador extends javax.swing.JFrame {
 
     private void jMenuItemProjetoOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProjetoOSActionPerformed
         // TODO add your handling code here:
+        GerenciaPOS GPOS = new GerenciaPOS();
+        GPOS.setVisible(true);
     }//GEN-LAST:event_jMenuItemProjetoOSActionPerformed
 
     /**
@@ -253,7 +329,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPaneListaProjeto;
-    private javax.swing.JTable jTableOrdemdeServico;
+    private javax.swing.JTable jTablePOS;
     private javax.swing.JTable jTableTecnicos;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,17 +14,17 @@ public class ProjetoOSDAO {
     public void cadastrarProjetoOS(ProjetoOS pVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "INSERT INTO Projeto_OrdemdeServico (Condicao, Descricao, LinkUnbonxing, DataInicio, "
-                    + "DataFim, Fk_Tecnico_IDUsuario, Fk_Cliente_IDUsuario) "
-                    + "(?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Projeto_OrdemdeServico (Condicao, Descricao, LinkUnboxing, DataInicio, "
+                    + "DataFim, fk_Tecnico_IDUsuario, fk_Cliente_IDUsuario) "
+                    + "(?,?,?,?,?,?,NULL,?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, pVO.getCondicao());
             pst.setString(2, pVO.getDescricao());
-            pst.setString(3, pVO.getLinkUnbonxing());
+            pst.setString(3, pVO.getLinkUnboxing());
             pst.setString(4, pVO.getDataInicio());
             pst.setString(5, pVO.getDataFim());
-            pst.setInt(6, pVO.getFk_Tecnico_IDUsuario());
-            pst.setInt(7, pVO.getFk_Cliente_IDUsuario());
+            pst.setInt(6, pVO.getfk_Cliente_IDUsuario());
+            pst.setInt(7, pVO.getfk_Tecnico_IDTecnico());
 
             pst.execute();
             System.out.println("Projeto / Ordem de Servico cadastrado com sucesso.");
@@ -46,15 +46,15 @@ public class ProjetoOSDAO {
                 p.setIDOs(rs.getInt("IDOs"));
                 p.setCondicao(rs.getString("Condicao"));
                 p.setDescricao(rs.getString("Descricao"));
-                p.setLinkUnbonxing(rs.getString("LinkUnbonxing"));
+                p.setLinkUnboxing(rs.getString("LinkUnboxing"));
                 p.setDataInicio(rs.getString("DataInicio"));
                 p.setDataFim(rs.getString("DataFim"));
-                p.setFk_Tecnico_IDUsuario(rs.getInt("Fk_Tecnico_IDUsuario"));
-                p.setFk_Cliente_IDUsuario(rs.getInt("Fk_Cliente_IDUsuario"));
+                p.setfk_Cliente_IDUsuario(rs.getInt("fk_Cliente_IDUsuario"));
+                p.setfk_Tecnico_IDTecnico(rs.getInt("fk_Tecnico_IDTecnico"));
                 projetoOSs.add(p);
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao listar Projeto / Ordem de Servico.\n");
+            System.out.println("Erro ao listar Projeto / Ordem de Servico.\n" + e.getMessage());
         }
         return projetoOSs;
     }
@@ -63,11 +63,11 @@ public class ProjetoOSDAO {
     public void atualizarProjetoOS(ProjetoOS pVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "Update Projeto_OrdemdeServico SET Condicao = ?, Descricao = ?, LinkUnbonxing = ?, DataInicio = ?, DataFim = ?";
+            String sql = "Update Projeto_OrdemdeServico SET Condicao = ?, Descricao = ?, LinkUnboxing = ?, DataInicio = ?, DataFim = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, "Condicao");
             pst.setString(2, "Descricao");
-            pst.setString(3, "LinkUnbonxing");
+            pst.setString(3, "LinkUnboxing");
             pst.setString(4, "DataInicio");
             pst.setString(5, "DataFim");
 
@@ -115,4 +115,30 @@ public class ProjetoOSDAO {
         }
         return p;
     }
+
+    public ProjetoOS getProjetoOSByIdCliente(int fk_Cliente_IDUsuario) {
+        ProjetoOS p = new ProjetoOS();
+
+        try {
+            Connection con = Conexao.getConexao();
+            String sql = "SELECT * FROM Projeto_OrdemdeServico WHERE fk_Cliente_IDUsuario = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, fk_Cliente_IDUsuario);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                p = new ProjetoOS();
+                p.setIDOs(rs.getInt("IDOs"));
+                p.setCondicao(rs.getString("Condicao"));
+                p.setDescricao(rs.getString("Descricao"));
+                p.setDataInicio(rs.getString("DataInicio"));
+                p.setDataFim(rs.getString("DataFim"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar o Projeto / Ordem de Servico.\n"
+                    + e.getMessage());
+        }
+        return p;
+    }
+
 }

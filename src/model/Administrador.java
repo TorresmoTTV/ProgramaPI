@@ -3,15 +3,15 @@ package model;
 public class Administrador {
     int IDAdmin;
     String Senha;
-    String Usuario;
+    String UsuarioAdmin;
 
     public Administrador(){
     }
 
-    public Administrador(int iDAdmin, String senha, String usuario) {
-        IDAdmin = iDAdmin;
+    public Administrador(int iDAdmin, String senha, String usuarioadmin) {
+       IDAdmin = iDAdmin;
         Senha = senha;
-        Usuario = usuario;
+        UsuarioAdmin = usuarioadmin;
     }
 
     public int getIDAdmin() {
@@ -30,12 +30,12 @@ public class Administrador {
         Senha = senha;
     }
 
-    public String getUsuario() {
-        return Usuario;
+    public String getUsuarioAdmin() {
+        return UsuarioAdmin;
     }
 
-    public void setUsuario(String usuario) {
-        Usuario = usuario;
+    public void setUsuarioAdmin(String usuarioadmin) {
+        UsuarioAdmin = usuarioadmin;
     }
 
 }

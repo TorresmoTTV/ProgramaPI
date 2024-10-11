@@ -39,8 +39,8 @@ public class GeradorRelatorioPDF {
             document.add(new Paragraph("Data de Finalização: " + pos.getDataFim()));
             document.add(new Paragraph("Condição: " + pos.getCondicao()));
             document.add(new Paragraph("Descrição: " + pos.getDescricao()));
-            document.add(new Paragraph("Cliente: " + pos.getFk_Cliente_IDUsuario()));
-            document.add(new Paragraph("Tecnico: " + pos.getFk_Tecnico_IDUsuario()));
+            document.add(new Paragraph("Cliente: " + pos.getfk_Cliente_IDUsuario()));
+            document.add(new Paragraph("Tecnico: " + pos.getfk_Tecnico_IDTecnico()));
             document.add(new Paragraph(" "));
         }
 

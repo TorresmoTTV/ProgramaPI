@@ -14,14 +14,14 @@ public class TecnicoDAO {
     public void cadastrarTecnico(Tecnico tVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "INSERT INTO Tecnico (Nome, Telefone, Email, CPF, Usuario, Senha)"
+            String sql = "INSERT INTO Tecnico (Nome, Telefone, Email, CPF, UsuarioTec, Senha)"
                     + "(?, ?, ?, ?, ?, ?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, tVO.getNome());
             pst.setString(2, tVO.getTelefone());
             pst.setString(3, tVO.getEmail());
             pst.setString(4, tVO.getCPF());
-            pst.setString(5, tVO.getUsuario());
+            pst.setString(5, tVO.getUsuarioTec());
             pst.setString(6, tVO.getSenha());
         } catch (SQLException e) {
             System.out.println("Erro ao cadastrar Tecnico.\n" + e.getMessage());
@@ -42,7 +42,7 @@ public class TecnicoDAO {
                 t.setTelefone(rs.getString("Telefone"));
                 t.setEmail(rs.getString("Email"));
                 t.setCPF(rs.getString("CPF"));
-                t.setUsuario(rs.getString("Usuario"));
+                t.setUsuarioTec(rs.getString("UsuarioTec"));
                 t.setSenha(rs.getString("Senha"));
                 tecnicoS.add(t);
             }
@@ -56,13 +56,13 @@ public class TecnicoDAO {
     public void atualizarTecnico(Tecnico tVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "UPDATE Tecnico SET Nome = ?, Telefone = ?, Email = ?, CPF = ?, Usuario = ?, Senha = ? where IDTecnico = ?";
+            String sql = "UPDATE Tecnico SET Nome = ?, Telefone = ?, Email = ?, CPF = ?, UsuarioTec = ?, Senha = ? where IDTecnico = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, tVO.getNome());
             pst.setString(2, tVO.getTelefone());
             pst.setString(3, tVO.getEmail());
             pst.setString(4, tVO.getCPF());
-            pst.setString(5, tVO.getUsuario());
+            pst.setString(5, tVO.getUsuarioTec());
             pst.setString(6, tVO.getSenha());
 
             pst.executeUpdate();
@@ -102,7 +102,7 @@ public class TecnicoDAO {
                 t.setTelefone(rs.getString("Telefone"));
                 t.setEmail(rs.getString("Email"));
                 t.setCPF(rs.getString("CPF"));
-                t.setUsuario(rs.getString("Usuario"));
+                t.setUsuarioTec(rs.getString("UsuarioTec"));
                 t.setSenha(rs.getString("Senha"));
             }
         } catch (SQLException e) {

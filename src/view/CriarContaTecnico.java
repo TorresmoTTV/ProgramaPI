@@ -284,7 +284,7 @@ public class CriarContaTecnico extends javax.swing.JFrame {
             t.setTelefone(jTelefoneTecnico.getText());
             t.setEmail(jEmailTecnico.getText());
             t.setCPF(jCPFTecnico.getText());
-            t.setUsuario(jUsuarioTecnico.getText());
+            t.setUsuarioTec(jUsuarioTecnico.getText());
             t.setSenha(jSenhaTecnico.getText());// verificar encriptação senha
 
             TecnicoServico TecnicoS = ServicosFactory.getTecnicoServico();

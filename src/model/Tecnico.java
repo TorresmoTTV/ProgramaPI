@@ -6,19 +6,19 @@ public class Tecnico {
     String Telefone;
     String Email;
     String CPF;
-    String Usuario;
+    String UsuarioTec;
     String Senha;
 
     public Tecnico(){
     }
     
-    public Tecnico(int iDTecnico, String nome, String telefone, String email, String cPF, String usuario, String senha) {
+    public Tecnico(int iDTecnico, String nome, String telefone, String email, String cPF, String usuariotec, String senha) {
         IDTecnico = iDTecnico;
         Nome = nome;
         Telefone = telefone;
         Email = email;
         CPF = cPF;
-        Usuario = usuario;
+        UsuarioTec = usuariotec;
         Senha = senha;
     }
 
@@ -62,12 +62,12 @@ public class Tecnico {
         CPF = cPF;
     }
 
-    public String getUsuario() {
-        return Usuario;
+    public String getUsuarioTec() {
+        return UsuarioTec;
     }
 
-    public void setUsuario(String usuario) {
-        Usuario = usuario;
+    public void setUsuarioTec(String usuariotec) {
+        UsuarioTec = usuariotec;
     }
 
     public String getSenha() {

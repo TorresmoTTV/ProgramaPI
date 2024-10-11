@@ -4,25 +4,25 @@ public class ProjetoOS {
     int IDOs;
     String Condicao;
     String Descricao;
-    String LinkUnbonxing;
+    String LinkUnboxing;
     String DataInicio; // verificar o LocalDate
     String DataFim; // verificar o LocalDate
     int fk_Cliente_IDUsuario;
-    int fk_Tecnico_IDUsuario;
+    int fk_Tecnico_IDTecnico;
 
     public ProjetoOS(){
     }
 
-    public ProjetoOS(int iDOs, String condicao, String descricao, String linkUnbonxing, String dataInicio,
-            String dataFim, int fk_Cliente_IDUsuario, int fk_Tecnico_IDUsuario) {
+    public ProjetoOS(int iDOs, String condicao, String descricao, String linkUnboxing, String dataInicio,
+            String dataFim, int fk_Cliente_IDUsuario, int fk_Tecnico_IDTecnico) {
         IDOs = iDOs;
         Condicao = condicao;
         Descricao = descricao;
-        LinkUnbonxing = linkUnbonxing;
+        LinkUnboxing = linkUnboxing;
         DataInicio = dataInicio;
         DataFim = dataFim;
         this.fk_Cliente_IDUsuario = fk_Cliente_IDUsuario;
-        this.fk_Tecnico_IDUsuario = fk_Tecnico_IDUsuario;
+        this.fk_Tecnico_IDTecnico = fk_Tecnico_IDTecnico;
     }
 
     public int getIDOs() {
@@ -49,12 +49,12 @@ public class ProjetoOS {
         Descricao = descricao;
     }
 
-    public String getLinkUnbonxing() {
-        return LinkUnbonxing;
+    public String getLinkUnboxing() {
+        return LinkUnboxing;
     }
 
-    public void setLinkUnbonxing(String linkUnbonxing) {
-        LinkUnbonxing = linkUnbonxing;
+    public void setLinkUnboxing(String linkUnboxing) {
+        LinkUnboxing = linkUnboxing;
     }
 
     public String getDataInicio() {
@@ -73,20 +73,20 @@ public class ProjetoOS {
         DataFim = dataFim;
     }
 
-    public int getFk_Cliente_IDUsuario() {
+    public int getfk_Cliente_IDUsuario() {
         return fk_Cliente_IDUsuario;
     }
 
-    public void setFk_Cliente_IDUsuario(int fk_Cliente_IDUsuario) {
+    public void setfk_Cliente_IDUsuario(int fk_Cliente_IDUsuario) {
         this.fk_Cliente_IDUsuario = fk_Cliente_IDUsuario;
     }
 
-    public int getFk_Tecnico_IDUsuario() {
-        return fk_Tecnico_IDUsuario;
+    public int getfk_Tecnico_IDTecnico() {
+        return fk_Tecnico_IDTecnico;
     }
 
-    public void setFk_Tecnico_IDUsuario(int fk_Tecnico_IDUsuario) {
-        this.fk_Tecnico_IDUsuario = fk_Tecnico_IDUsuario;
+    public void setfk_Tecnico_IDTecnico(int fk_Tecnico_IDTecnico) {
+        this.fk_Tecnico_IDTecnico = fk_Tecnico_IDTecnico;
     }
 
 }

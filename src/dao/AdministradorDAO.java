@@ -16,7 +16,7 @@ public class AdministradorDAO {
             Connection con = Conexao.getConexao();
             String sql = "INSERT INTO Administrador (Usuario, Senha) VALUES (?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, aVO.getUsuario());
+            pst.setString(1, aVO.getUsuarioAdmin());
             pst.setString(2, aVO.getSenha());
 
             pst.execute();
@@ -36,7 +36,7 @@ public class AdministradorDAO {
             while (rs.next()) {
                 Administrador a = new Administrador();
                 a.setIDAdmin(rs.getInt("IDAdmin"));
-                a.setUsuario(rs.getString("Usuario"));
+                a.setUsuarioAdmin(rs.getString("Usuario"));
                 a.setSenha(rs.getString("Senha"));
                 AdministradorS.add(a);
             }
@@ -52,7 +52,7 @@ public class AdministradorDAO {
             Connection con = Conexao.getConexao();
             String sql = "UPDATE Administrador SET Usuario = ?, Senha = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, aVO.getUsuario());
+            pst.setString(1, aVO.getUsuarioAdmin());
             pst.setString(2, aVO.getSenha());
 
             pst.executeUpdate();
@@ -88,7 +88,7 @@ public class AdministradorDAO {
             if (rs.next()) {
                 a = new Administrador();
                 a.setIDAdmin(rs.getInt("IDAdmin"));
-                a.setUsuario(rs.getString("Usuario"));
+                a.setUsuarioAdmin(rs.getString("Usuario"));
                 a.setSenha(rs.getString("Senha"));
             }
         } catch (SQLException e) {

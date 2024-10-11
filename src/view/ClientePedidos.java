@@ -39,7 +39,7 @@ public class ClientePedidos extends javax.swing.JFrame {
             rowData[2] = ProjetoOS.getDescricao();
             rowData[3] = ProjetoOS.getDataInicio();
             rowData[4] = ProjetoOS.getDataFim();
-            rowData[6] = ProjetoOS.getLinkUnbonxing();
+            rowData[6] = ProjetoOS.getLinkUnboxing();
             model.addRow(rowData);
         }
     }
