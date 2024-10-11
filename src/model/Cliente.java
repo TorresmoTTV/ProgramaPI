@@ -8,13 +8,13 @@ public class Cliente {
     String Endereco;
     String CPF;
     String Telefone;
-    String Usuario;
+    String UsuarioCliente;
     String Senha;
 
     public Cliente(){
     }
 
-    public Cliente(int iDUsuario, String nome, String email, String endereco, String cPF, String telefone, String usuario,
+    public Cliente(int iDUsuario, String nome, String email, String endereco, String cPF, String telefone, String usuariocliente,
             String senha) {
         IDUsuario = iDUsuario;
         Nome = nome;
@@ -22,7 +22,7 @@ public class Cliente {
         Endereco = endereco;
         CPF = cPF;
         Telefone = telefone;
-        Usuario = usuario;
+        UsuarioCliente = usuariocliente;
         Senha = senha;
     }
 
@@ -74,12 +74,12 @@ public class Cliente {
         this.Telefone = Telefone;
     }
 
-    public String getUsuario() {
-        return Usuario;
+    public String getUsuarioCliente() {
+        return UsuarioCliente;
     }
 
-    public void setUsuario(String Usuario) {
-        this.Usuario = Usuario;
+    public void setUsuarioCliente(String UsuarioCliente) {
+        this.UsuarioCliente = UsuarioCliente;
     }
 
     public String getSenha() {

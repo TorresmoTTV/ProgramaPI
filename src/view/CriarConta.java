@@ -241,7 +241,7 @@ public class CriarConta extends javax.swing.JFrame {
             c.setCPF(jCPFCliente.getText());
             c.setEndereco(jEndrecoCliente.getText());
             c.setTelefone(jTelefoneCliente.getText());
-            c.setUsuario(jUsuarioCliente.getText());
+            c.setUsuarioCliente(jUsuarioCliente.getText());
             c.setSenha(jSenhaCliente.getText());// verificar encriptação senha
             
             ClienteServico usuarioS = ServicosFactory.getClienteServico();

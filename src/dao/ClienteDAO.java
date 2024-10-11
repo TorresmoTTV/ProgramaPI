@@ -14,7 +14,7 @@ public class ClienteDAO {
     public void cadastrarCliente(Cliente cVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "INSERT INTO Cliente (Nome, Email, Endereco, CPF, Telefone, Usuario, Senha)"
+            String sql = "INSERT INTO Cliente (Nome, Email, Endereco, CPF, Telefone, UsuarioCliente, Senha)"
                     + "VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, cVO.getNome());
@@ -22,7 +22,7 @@ public class ClienteDAO {
             pst.setString(3, cVO.getEndereco());
             pst.setString(4, cVO.getCPF());
             pst.setString(5, cVO.getTelefone());
-            pst.setString(6, cVO.getUsuario());
+            pst.setString(6, cVO.getUsuarioCliente());
             pst.setString(7, cVO.getSenha());
 
             pst.execute();
@@ -48,7 +48,7 @@ public class ClienteDAO {
                 c.setEndereco(rs.getString("Endereco"));
                 c.setCPF(rs.getString("CPF"));
                 c.setTelefone(rs.getString("Telefone"));
-                c.setUsuario(rs.getString("Usuario"));
+                c.setUsuarioCliente(rs.getString("UsuarioCliente"));
                 c.setSenha(rs.getString("Senha"));
                 clienteS.add(c);
             }
@@ -62,14 +62,14 @@ public class ClienteDAO {
     public void atualizarCliente(Cliente cVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "UPDATE Cliente SET Nome = ?, Email = ?, CPF = ?, Telefone = ?, Usuario = ?, Senha = ? where IDCliente = ?";
+            String sql = "UPDATE Cliente SET Nome = ?, Email = ?, CPF = ?, Telefone = ?, UsuarioCliente = ?, Senha = ? where IDCliente = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, cVO.getNome());
             pst.setString(2, cVO.getEmail());
             pst.setString(3, cVO.getEndereco());
             pst.setString(4, cVO.getCPF());
             pst.setString(5, cVO.getTelefone());
-            pst.setString(6, cVO.getUsuario());
+            pst.setString(6, cVO.getUsuarioCliente());
             pst.setString(7, cVO.getSenha());
 
             pst.executeUpdate();
@@ -110,7 +110,7 @@ public class ClienteDAO {
                 c.setEndereco(rs.getString("Endereco"));
                 c.setCPF(rs.getString("CPF"));
                 c.setTelefone(rs.getString("Telefone"));
-                c.setUsuario(rs.getString("Usuario"));
+                c.setUsuarioCliente(rs.getString("UsuarioCliente"));
                 c.setSenha(rs.getString("Senha"));
             }
         } catch (SQLException e) {
