@@ -7,6 +7,7 @@ package view;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 import model.ProjetoOS;
 import servicos.ProjetoOSServico;
 import servicos.ServicosFactory;
@@ -59,8 +60,8 @@ public class GerenciaPOS extends javax.swing.JFrame {
         }
     }
 
-    private void validaInputsPOS() {
-
+    private boolean validaInputsPOS() {
+        return true;
     }
 
     /**
@@ -109,7 +110,7 @@ public class GerenciaPOS extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Data de Criação", "Data de Finalização", "Condição", "Descrição", "Unboxing", "Técnico", "Cliente"
+                "ID", "Condição", "Descrição", "Unboxing", "Data de Criação", "Data de Finalização", "Técnico", "Cliente"
             }
         ) {
             Class[] types = new Class [] {
@@ -223,51 +224,51 @@ public class GerenciaPOS extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldDataFim, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldCondicao))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextFieldCliente))
+                                    .addComponent(jLabel5)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldTecnico)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGap(35, 35, 35)
+                                    .addComponent(jTextFieldDataInicio)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButtonEditarPOS)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonSalvarPOS)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonCancelarPOS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonVoltar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jTextFieldDataFim, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel4)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jTextFieldCondicao))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel6)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jTextFieldCliente))
-                                        .addComponent(jLabel5)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel3)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jTextFieldTecnico)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(jTextFieldDataInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)))
-                        .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(163, 163, 163)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonVoltar)
+                    .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42))
         );
         jPanel1Layout.setVerticalGroup(
@@ -275,11 +276,6 @@ public class GerenciaPOS extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
@@ -308,13 +304,18 @@ public class GerenciaPOS extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(jTextFieldCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonEditarPOS)
-                    .addComponent(jButtonSalvarPOS)
-                    .addComponent(jButtonVoltar)
-                    .addComponent(jButtonCancelarPOS))
-                .addContainerGap())
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonEditarPOS)
+                            .addComponent(jButtonSalvarPOS)
+                            .addComponent(jButtonVoltar)
+                            .addComponent(jButtonCancelarPOS))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(73, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -362,21 +363,34 @@ public class GerenciaPOS extends javax.swing.JFrame {
         if (jButtonSalvarPOS.getText().equals("Salvar")) {
             //salvar
             if (validaInputsPOS()) {
-                ProjetoOS pos = new ProjetoOS();
-                pos.setDataInicio(jTextFieldDataInicio.getText());
-                pos.setDataFim(jTextFieldDataFim.getText());
-                pos.setCondicao(jTextFieldCondicao.getText());
-                pos.setDescricao(jTextAreaLinkUnboxing.getText());
-                pos.setLinkUnboxing(jTextAreaLinkUnboxing.getText());
-                pos.setfk_Tecnico_IDTecnico(jTextFieldTecnico.getText());
-                pos.setfk_Cliente_IDUsuario(jTextFieldCliente.getText());
-                ProjetoOSServico POSs = ServicosFactory.getProjetoOSServico();
-                POSs.cadastrarProjetoOS(pos);
-                addRowToTablePOS();
-                limpaCamposPOS();
+                try {
+                    // Verificar se os campos que devem ser inteiros contêm apenas números
+                    int tecnicoID = Integer.parseInt(jTextFieldTecnico.getText());
+                    int clienteID = Integer.parseInt(jTextFieldCliente.getText());
+
+                    ProjetoOS pos = new ProjetoOS();
+                    pos.setCondicao(jTextFieldCondicao.getText());
+                    pos.setDescricao(jTextAreaLinkUnboxing.getText());
+                    pos.setLinkUnboxing(jTextAreaLinkUnboxing.getText());
+                    pos.setDataInicio(jTextFieldDataInicio.getText());
+                    pos.setDataFim(jTextFieldDataFim.getText());
+                    pos.setfk_Tecnico_IDTecnico(tecnicoID);  // Aqui já está convertendo corretamente
+                    pos.setfk_Cliente_IDUsuario(clienteID);   // Aqui também
+
+                    ProjetoOSServico POSs = ServicosFactory.getProjetoOSServico();
+                    POSs.cadastrarProjetoOS(pos);
+                    addRowToTablePOS();
+                    limpaCamposPOS();
+                } catch (NumberFormatException e) {
+                    // Exibir mensagem de erro se os campos técnico ou cliente não forem numéricos
+                    JOptionPane.showMessageDialog(null, "Os campos Técnico e Cliente devem conter apenas números!", "Erro de entrada", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } else {
             //update
+            int tecnicoID = Integer.parseInt(jTextFieldTecnico.getText());
+            int clienteID = Integer.parseInt(jTextFieldCliente.getText());
+
             ProjetoOS posS = new ProjetoOS();
             posS.setIDOs(idEdit);
             posS.setDataInicio(jTextFieldDataInicio.getText());
@@ -384,8 +398,8 @@ public class GerenciaPOS extends javax.swing.JFrame {
             posS.setCondicao(jTextFieldCondicao.getText());
             posS.setDescricao(jTextAreaDescricao.getText());
             posS.setLinkUnboxing(jTextAreaLinkUnboxing.getText());
-            posS.setfk_Tecnico_IDTecnico(jTextFieldTecnico.getText());
-            posS.setfk_Cliente_IDUsuario(jTextFieldCliente.getText());
+            posS.setfk_Tecnico_IDTecnico(tecnicoID);
+            posS.setfk_Cliente_IDUsuario(clienteID);
             ProjetoOSServico POSs = ServicosFactory.getProjetoOSServico();
             POSs.atualizaProjetoOS(posS);
             addRowToTablePOS();

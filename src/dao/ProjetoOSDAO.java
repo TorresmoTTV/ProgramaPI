@@ -15,8 +15,8 @@ public class ProjetoOSDAO {
         try {
             Connection con = Conexao.getConexao();
             String sql = "INSERT INTO Projeto_OrdemdeServico (Condicao, Descricao, LinkUnboxing, DataInicio, "
-                    + "DataFim, fk_Tecnico_IDUsuario, fk_Cliente_IDUsuario) "
-                    + "(?,?,?,?,?,?,NULL,?)";
+                    + "DataFim, fk_Tecnico_IDTecnico, fk_Cliente_IDUsuario) "
+                    + "values (?,?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, pVO.getCondicao());
             pst.setString(2, pVO.getDescricao());
