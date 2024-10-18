@@ -31,9 +31,9 @@ public class GerenciaPOS extends javax.swing.JFrame {
     private void limpaCamposPOS() {
         jTextFieldDataInicio.setText("");
         jTextFieldDataFim.setText("");
-        jTextAreaDescricao.setText("");
-        jTextAreaLinkUnboxing.setText("");
         jTextFieldCondicao.setText("");
+        jTextFieldDescricao.setText("");
+        jTextFieldLinkUnboxing.setText("");
         jTextFieldCliente.setText("");
         jTextFieldTecnico.setText("");
     }
@@ -82,9 +82,7 @@ public class GerenciaPOS extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextFieldCondicao = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaLinkUnboxing = new javax.swing.JTextArea();
+        jTextFieldDescricao = new javax.swing.JTextField();
         jTextFieldTecnico = new javax.swing.JTextField();
         jTextFieldCliente = new javax.swing.JTextField();
         jButtonEditarPOS = new javax.swing.JButton();
@@ -95,8 +93,8 @@ public class GerenciaPOS extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextFieldDataInicio = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextAreaDescricao = new javax.swing.JTextArea();
+        jTextFieldLinkUnboxing = new javax.swing.JTextField();
+        jTextFieldCondicao = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,15 +148,11 @@ public class GerenciaPOS extends javax.swing.JFrame {
 
         jLabel6.setText("Cliente:");
 
-        jTextFieldCondicao.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCondicaoActionPerformed(evt);
+                jTextFieldDescricaoActionPerformed(evt);
             }
         });
-
-        jTextAreaLinkUnboxing.setColumns(20);
-        jTextAreaLinkUnboxing.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaLinkUnboxing);
 
         jTextFieldTecnico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,9 +204,17 @@ public class GerenciaPOS extends javax.swing.JFrame {
 
         jLabel8.setText("Link Unboxing");
 
-        jTextAreaDescricao.setColumns(20);
-        jTextAreaDescricao.setRows(5);
-        jScrollPane2.setViewportView(jTextAreaDescricao);
+        jTextFieldLinkUnboxing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldLinkUnboxingActionPerformed(evt);
+            }
+        });
+
+        jTextFieldCondicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCondicaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -225,47 +227,45 @@ public class GerenciaPOS extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldDataFim, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldCondicao))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextFieldCliente))
-                                    .addComponent(jLabel5)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldTecnico)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(35, 35, 35)
-                                    .addComponent(jTextFieldDataInicio)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonEditarPOS)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonSalvarPOS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonCancelarPOS)
-                        .addGap(163, 163, 163)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(35, 35, 35)
+                                .addComponent(jTextFieldDataInicio))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldDataFim))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldCondicao))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButtonEditarPOS)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButtonSalvarPOS)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonCancelarPOS)))
+                                .addGap(0, 145, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldCliente)
+                                    .addComponent(jTextFieldTecnico))))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldLinkUnboxing)
+                            .addComponent(jTextFieldDescricao))
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonVoltar)
                     .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -277,25 +277,26 @@ public class GerenciaPOS extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jTextFieldDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(jTextFieldDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(15, 15, 15)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(jTextFieldCondicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
-                        .addGap(8, 8, 8)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8)
-                        .addGap(2, 2, 2)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jTextFieldLinkUnboxing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -309,13 +310,13 @@ public class GerenciaPOS extends javax.swing.JFrame {
                             .addComponent(jButtonEditarPOS)
                             .addComponent(jButtonSalvarPOS)
                             .addComponent(jButtonVoltar)
-                            .addComponent(jButtonCancelarPOS))
-                        .addContainerGap())
+                            .addComponent(jButtonCancelarPOS)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(29, 29, 29)
                         .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(73, Short.MAX_VALUE))))
+                        .addGap(0, 67, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -332,9 +333,9 @@ public class GerenciaPOS extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldCondicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCondicaoActionPerformed
+    private void jTextFieldDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCondicaoActionPerformed
+    }//GEN-LAST:event_jTextFieldDescricaoActionPerformed
 
     private void jButtonEditarPOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarPOSActionPerformed
         // TODO add your handling code here:
@@ -348,7 +349,8 @@ public class GerenciaPOS extends javax.swing.JFrame {
         jTextFieldDataInicio.setText(POS.getDataInicio());
         jTextFieldDataFim.setText(POS.getDataFim());
         jTextFieldCondicao.setText(POS.getCondicao());
-        jTextAreaLinkUnboxing.setText(POS.getDescricao());
+        jTextFieldDescricao.setText(POS.getDescricao());
+        jTextFieldLinkUnboxing.setText(POS.getLinkUnboxing());
         jTextFieldTecnico.setText(String.valueOf(POS.getfk_Cliente_IDUsuario()));
         jTextFieldCliente.setText(String.valueOf(POS.getfk_Tecnico_IDTecnico()));
     }//GEN-LAST:event_jButtonEditarPOSActionPerformed
@@ -370,8 +372,8 @@ public class GerenciaPOS extends javax.swing.JFrame {
 
                     ProjetoOS pos = new ProjetoOS();
                     pos.setCondicao(jTextFieldCondicao.getText());
-                    pos.setDescricao(jTextAreaLinkUnboxing.getText());
-                    pos.setLinkUnboxing(jTextAreaLinkUnboxing.getText());
+                    pos.setDescricao(jTextFieldDescricao.getText());
+                    pos.setLinkUnboxing(jTextFieldLinkUnboxing.getText());
                     pos.setDataInicio(jTextFieldDataInicio.getText());
                     pos.setDataFim(jTextFieldDataFim.getText());
                     pos.setfk_Tecnico_IDTecnico(tecnicoID);  // Aqui já está convertendo corretamente
@@ -388,24 +390,29 @@ public class GerenciaPOS extends javax.swing.JFrame {
             }
         } else {
             //update
-            int tecnicoID = Integer.parseInt(jTextFieldTecnico.getText());
-            int clienteID = Integer.parseInt(jTextFieldCliente.getText());
+            try {
+                int tecnicoID = Integer.parseInt(jTextFieldTecnico.getText());
+                int clienteID = Integer.parseInt(jTextFieldCliente.getText());
 
-            ProjetoOS posS = new ProjetoOS();
-            posS.setIDOs(idEdit);
-            posS.setDataInicio(jTextFieldDataInicio.getText());
-            posS.setDataFim(jTextFieldDataFim.getText());
-            posS.setCondicao(jTextFieldCondicao.getText());
-            posS.setDescricao(jTextAreaDescricao.getText());
-            posS.setLinkUnboxing(jTextAreaLinkUnboxing.getText());
-            posS.setfk_Tecnico_IDTecnico(tecnicoID);
-            posS.setfk_Cliente_IDUsuario(clienteID);
-            ProjetoOSServico POSs = ServicosFactory.getProjetoOSServico();
-            POSs.atualizaProjetoOS(posS);
-            addRowToTablePOS();
-            JOptionPane.showMessageDialog(this, "Projeto/Ordem de Serviço atualizado com sucesso!!");
-            //jBDefault();
-            limpaCamposPOS();
+                ProjetoOS posS = new ProjetoOS();
+                posS.setIDOs(idEdit);
+                posS.setDataInicio(jTextFieldDataInicio.getText());
+                posS.setDataFim(jTextFieldDataFim.getText());
+                posS.setCondicao(jTextFieldCondicao.getText());
+                posS.setDescricao(jTextFieldDescricao.getText());
+                posS.setLinkUnboxing(jTextFieldLinkUnboxing.getText());
+                posS.setfk_Tecnico_IDTecnico(tecnicoID);
+                posS.setfk_Cliente_IDUsuario(clienteID);
+                ProjetoOSServico POSs = ServicosFactory.getProjetoOSServico();
+                POSs.atualizaProjetoOS(posS);
+                addRowToTablePOS();
+                JOptionPane.showMessageDialog(this, "Projeto/Ordem de Serviço atualizado com sucesso!!");
+                //jBDefault();
+                limpaCamposPOS();
+            } catch (NumberFormatException e) {
+                // Exibir mensagem de erro se os campos técnico ou cliente não forem numéricos
+                JOptionPane.showMessageDialog(null, "Os campos Técnico e Cliente devem conter apenas números!", "Erro de entrada", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jButtonSalvarPOSActionPerformed
 
@@ -425,6 +432,14 @@ public class GerenciaPOS extends javax.swing.JFrame {
     private void jTextFieldTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTecnicoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTecnicoActionPerformed
+
+    private void jTextFieldLinkUnboxingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLinkUnboxingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldLinkUnboxingActionPerformed
+
+    private void jTextFieldCondicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCondicaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCondicaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -475,16 +490,14 @@ public class GerenciaPOS extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPaneListaProjeto;
     private javax.swing.JTable jTablePOS;
-    private javax.swing.JTextArea jTextAreaDescricao;
-    private javax.swing.JTextArea jTextAreaLinkUnboxing;
     private javax.swing.JTextField jTextFieldCliente;
     private javax.swing.JTextField jTextFieldCondicao;
     private javax.swing.JTextField jTextFieldDataFim;
     private javax.swing.JTextField jTextFieldDataInicio;
+    private javax.swing.JTextField jTextFieldDescricao;
+    private javax.swing.JTextField jTextFieldLinkUnboxing;
     private javax.swing.JTextField jTextFieldTecnico;
     // End of variables declaration//GEN-END:variables
 }

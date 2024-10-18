@@ -94,6 +94,7 @@ public class Administrador extends javax.swing.JFrame {
         jMenuItemProjetoOS = new javax.swing.JMenuItem();
         jMenuCriarRelatorio = new javax.swing.JMenu();
         jMenuItemRelatorioPOS = new javax.swing.JMenuItem();
+        jMenuItemRelatorioTec = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -239,6 +240,14 @@ public class Administrador extends javax.swing.JFrame {
         });
         jMenuCriarRelatorio.add(jMenuItemRelatorioPOS);
 
+        jMenuItemRelatorioTec.setText("Técnicos");
+        jMenuItemRelatorioTec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRelatorioTecActionPerformed(evt);
+            }
+        });
+        jMenuCriarRelatorio.add(jMenuItemRelatorioTec);
+
         jMenuCriarAdministrador.add(jMenuCriarRelatorio);
 
         jMenuAdministrador.add(jMenuCriarAdministrador);
@@ -281,6 +290,17 @@ public class Administrador extends javax.swing.JFrame {
         GerenciaPOS GPOS = new GerenciaPOS();
         GPOS.setVisible(true);
     }//GEN-LAST:event_jMenuItemProjetoOSActionPerformed
+
+    private void jMenuItemRelatorioTecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioTecActionPerformed
+        // TODO add your handling code here:
+        try {
+            GeradorRelatorioPDF GerarTEC = new GeradorRelatorioPDF();
+            GerarTEC.gerarRelatorioTecnicos();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenuItemRelatorioTecActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,6 +345,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuCriarRelatorio;
     private javax.swing.JMenuItem jMenuItemProjetoOS;
     private javax.swing.JMenuItem jMenuItemRelatorioPOS;
+    private javax.swing.JMenuItem jMenuItemRelatorioTec;
     private javax.swing.JMenuItem jMenuItemTecnico;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
