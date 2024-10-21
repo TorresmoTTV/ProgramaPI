@@ -14,7 +14,7 @@ public class ClienteDAO {
     public void cadastrarCliente(Cliente cVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "INSERT INTO Cliente (Nome, Email, Endereco, CPF, Telefone, UsuarioCliente, Senha)"
+            String sql = "INSERT INTO Cliente (Nome, Email, Endereco, CPF, Telefone, Usuario, Senha)"
                     + "VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, cVO.getNome());
@@ -119,4 +119,29 @@ public class ClienteDAO {
         }
         return c;
     }
+
+    public Cliente buscarClientePorLoginSenha(String login, String senha) throws SQLException {
+        Connection conexao = Conexao.getConexao();
+        Cliente cliente = null;
+
+        String sql = "SELECT * FROM Cliente WHERE Usuario = ? AND Senha = ?";
+
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, login);
+            stmt.setString(2, senha);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                // Cria o objeto Cliente e define seus atributos
+                cliente = new Cliente();
+                cliente.setIDUsuario(rs.getInt("IDUsuario"));
+                cliente.setNome(rs.getString("Nome"));
+                cliente.setEmail(rs.getString("Email"));
+                // Outras informações do cliente...
+            }
+        }
+
+        return cliente;
+    }
+
 }

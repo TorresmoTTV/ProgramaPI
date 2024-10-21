@@ -32,7 +32,40 @@ public class CriarConta extends javax.swing.JFrame {
         jSenhaCliente.setText("");
     }
 
+    private boolean validaCPF(String cpf) {
+        // Implementação básica que verifica se o CPF tem 11 dígitos numéricos
+        return cpf.matches("\\d{11}");
+    }
+
     public boolean validaInputs() {
+        if (jNomeCliente.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "O campo Nome não pode estar vazio.", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (jEmailCliente.getText().trim().isEmpty() || !jEmailCliente.getText().matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "E-mail inválido.", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (jCPFCliente.getText().trim().isEmpty() || !validaCPF(jCPFCliente.getText())) {
+            javax.swing.JOptionPane.showMessageDialog(this, "CPF inválido.", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (jEndrecoCliente.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "O campo Endereço não pode estar vazio.", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (jTelefoneCliente.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "O campo Telefone não pode estar vazio.", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (jUsuarioCliente.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "O campo Usuário não pode estar vazio.", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (jSenhaCliente.getText().trim().isEmpty() || jSenhaCliente.getText().length() < 6) {
+            javax.swing.JOptionPane.showMessageDialog(this, "A senha deve ter pelo menos 6 caracteres.", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
         return true;
     }
 
@@ -235,7 +268,7 @@ public class CriarConta extends javax.swing.JFrame {
     private void jBCriarContaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCriarContaClienteActionPerformed
         if (validaInputs()) {
             Cliente c = new Cliente();
-            
+
             c.setNome(jNomeCliente.getText().toUpperCase());
             c.setEmail(jEmailCliente.getText());
             c.setCPF(jCPFCliente.getText());
@@ -243,9 +276,14 @@ public class CriarConta extends javax.swing.JFrame {
             c.setTelefone(jTelefoneCliente.getText());
             c.setUsuarioCliente(jUsuarioCliente.getText());
             c.setSenha(jSenhaCliente.getText());// verificar encriptação senha
-            
+
             ClienteServico usuarioS = ServicosFactory.getClienteServico();
-            usuarioS.cadastrarCliente(c);
+            try {
+                usuarioS.cadastrarCliente(c);
+                javax.swing.JOptionPane.showMessageDialog(this, "Conta criada com sucesso!", "Sucesso", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Erro ao criar a conta: " + e.getMessage(), "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
             //janela para aviso que criou conta
         }
     }//GEN-LAST:event_jBCriarContaClienteActionPerformed

@@ -5,6 +5,10 @@
  */
 package view;
 
+import dao.ClienteDAO;
+import model.Cliente;
+
+
 /**
  *
  * @author 182310076
@@ -123,6 +127,37 @@ public class Principal extends javax.swing.JFrame {
 
     private void jBLogarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLogarClienteActionPerformed
         // TODO add your handling code here:
+        // Captura o login e a senha fornecidos pelo usuário
+        String login = jTextLogin.getText();
+        String senha = new String(jSenhaCliente.getPassword());
+
+        // Verifica se os campos não estão vazios
+        if (login.isEmpty() || senha.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos!");
+            return;
+        }
+
+        try {
+            // Instancia o ClienteDAO para buscar o cliente
+            ClienteDAO clienteDAO = new ClienteDAO();
+
+            // Busca o cliente no banco de dados
+            Cliente cliente = clienteDAO.buscarClientePorLoginSenha(login, senha);
+
+            // Verifica se o cliente foi encontrado
+            if (cliente != null) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Login realizado com sucesso!");
+                // Direciona para a tela do cliente (a ser implementada)
+                ClientePedidos telaCliente = new ClientePedidos();
+                telaCliente.setVisible(true);
+                this.dispose(); // Fecha a tela de login
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Usuário ou senha incorretos.");
+            }
+        } catch (Exception e) {
+            // Lida com erros de conexão ou SQL
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao realizar login: " + e.getMessage());
+        }
     }//GEN-LAST:event_jBLogarClienteActionPerformed
 
     private void jBCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCriarContaActionPerformed
@@ -156,13 +191,33 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal
+
+.class  
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal
+
+.class  
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal
+
+.class  
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal
+
+.class  
+
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
