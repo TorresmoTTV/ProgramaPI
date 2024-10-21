@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Tecnico;
 import servicos.ServicosFactory;
 import servicos.TecnicoServico;
@@ -18,17 +20,41 @@ public class CriarContaTecnico extends javax.swing.JFrame {
     /**
      * Creates new form CriarConta
      */
+    int idEdit;
+            
     public CriarContaTecnico() {
         initComponents();
+        addRowToTableTEC();
     }
 
-    public void limparCamposConta() {
+    public void limparCamposContaTec() {
         jNomeTecnico.setText("");
         jEmailTecnico.setText("");
         jCPFTecnico.setText("");
         jTelefoneTecnico.setText("");
         jUsuarioTecnico.setText("");
         jSenhaTecnico.setText("");
+    }
+
+    private void addRowToTableTEC() {
+        //pega a modelagem da tabela na interface gráfica
+        DefaultTableModel model = (DefaultTableModel) jTableCriarEditarTecnico.getModel();
+        model.getDataVector().removeAllElements();// remove todas as linhas
+        model.fireTableDataChanged();
+        // cria vetor de 7 posições que corresponde as colunas da tabela
+        Object rowData[] = new Object[7];
+        TecnicoServico tec = ServicosFactory.getTecnicoServico();
+        // percorrer lista e popula vetor e add vetor a tabela
+        for (Tecnico tecnicoS : tec.listaTecnicos()) {
+            rowData[0] = tecnicoS.getIDTecnico();
+            rowData[1] = tecnicoS.getNome();
+            rowData[2] = tecnicoS.getEmail();
+            rowData[3] = tecnicoS.getCPF();
+            rowData[4] = tecnicoS.getTelefone();
+            rowData[5] = tecnicoS.getUsuarioTec();
+            rowData[6] = tecnicoS.getSenha();
+            model.addRow(rowData);
+        }
     }
 
     public boolean validaInputs() {
@@ -65,6 +91,7 @@ public class CriarContaTecnico extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableCriarEditarTecnico = new javax.swing.JTable();
         jBEditarContaTecnico = new javax.swing.JButton();
+        jBCancelarTecnico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,7 +116,7 @@ public class CriarContaTecnico extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel7.setText("Senha:");
 
-        jBCriarContaTecnico.setText("Criar Conta");
+        jBCriarContaTecnico.setText("Criar");
         jBCriarContaTecnico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCriarContaTecnicoActionPerformed(evt);
@@ -124,7 +151,7 @@ public class CriarContaTecnico extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nome", "Email", "CPF", "Telefone", "Usuário"
+                "Id", "Nome", "Telefone", "Email", "CPF", "Usuário"
             }
         ) {
             Class[] types = new Class [] {
@@ -159,6 +186,13 @@ public class CriarContaTecnico extends javax.swing.JFrame {
             }
         });
 
+        jBCancelarTecnico.setText("Cancelar");
+        jBCancelarTecnico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarTecnicoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -184,13 +218,15 @@ public class CriarContaTecnico extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jBCriarContaTecnico)
+                                .addGap(1, 1, 1)
+                                .addComponent(jBCriarContaTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBEditarContaTecnico)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBExcluirTecnico)
-                                .addGap(295, 295, 295)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBCancelarTecnico)
+                                .addGap(201, 201, 201)
                                 .addComponent(jBVoltarPaginaAdministrador))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel1)
@@ -245,7 +281,8 @@ public class CriarContaTecnico extends javax.swing.JFrame {
                     .addComponent(jBExcluirTecnico)
                     .addComponent(jBVoltarPaginaAdministrador)
                     .addComponent(jBCriarContaTecnico)
-                    .addComponent(jBEditarContaTecnico))
+                    .addComponent(jBEditarContaTecnico)
+                    .addComponent(jBCancelarTecnico))
                 .addGap(47, 47, 47))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -274,22 +311,54 @@ public class CriarContaTecnico extends javax.swing.JFrame {
     }//GEN-LAST:event_jBVoltarPaginaAdministradorActionPerformed
 
     private void jBExcluirTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirTecnicoActionPerformed
-        
+        int linha = jTableCriarEditarTecnico.getSelectedRow();
+        int id = (int) jTableCriarEditarTecnico.getValueAt(linha,0);
+        String nome = (String) jTableCriarEditarTecnico.getValueAt(linha,1);
+        Object[] btnMSG = {"Sim", "Não"};
+        int resp = JOptionPane.showOptionDialog(this, "Deseja realmente deletar " + nome, ".: Deletar :.",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, btnMSG, btnMSG[0]);
+        if (resp == 0) {
+            TecnicoServico TECs = ServicosFactory.getTecnicoServico();
+            TECs.deletarTecnico(id);
+            addRowToTableTEC();
+            JOptionPane.showMessageDialog(this, "Técnico " + nome + " deletado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Ok, delete cancelado com sucesso!");
+        }
     }//GEN-LAST:event_jBExcluirTecnicoActionPerformed
 
     private void jBCriarContaTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCriarContaTecnicoActionPerformed
+        if (jBCriarContaTecnico.getText().equals("Criar")) {
         if (validaInputs()) {
             Tecnico t = new Tecnico();
-            t.setNome(jNomeTecnico.getText().toUpperCase());
-            t.setTelefone(jTelefoneTecnico.getText());
+            t.setNome(jNomeTecnico.getText());
             t.setEmail(jEmailTecnico.getText());
             t.setCPF(jCPFTecnico.getText());
+            t.setTelefone(jTelefoneTecnico.getText());
             t.setUsuarioTec(jUsuarioTecnico.getText());
-            t.setSenha(jSenhaTecnico.getText());// verificar encriptação senha
+            t.setSenha(jSenhaTecnico.getName());// verificar encriptação senha
 
             TecnicoServico TecnicoS = ServicosFactory.getTecnicoServico();
             TecnicoS.cadastrarTecnico(t);
+            addRowToTableTEC();
+            limparCamposContaTec();
             //janela para aviso que criou conta
+        }
+        } else {
+            Tecnico t = new Tecnico();
+            t.setIDTecnico(idEdit);
+            t.setNome(jNomeTecnico.getText());
+            t.setEmail(jEmailTecnico.getText());
+            t.setCPF(jCPFTecnico.getText());
+            t.setTelefone(jTelefoneTecnico.getText());
+            t.setUsuarioTec(jUsuarioTecnico.getText());
+            t.setSenha(jSenhaTecnico.getName());
+            TecnicoServico TECs = ServicosFactory.getTecnicoServico();
+            TECs.atualizaTecnico(t);
+            addRowToTableTEC();
+            JOptionPane.showMessageDialog(this, "Técnico atualizado com sucesso!");
+            jBCriarContaTecnico.setText("Criar");
+            limparCamposContaTec();
         }
     }//GEN-LAST:event_jBCriarContaTecnicoActionPerformed
 
@@ -299,7 +368,26 @@ public class CriarContaTecnico extends javax.swing.JFrame {
 
     private void jBEditarContaTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarContaTecnicoActionPerformed
         // TODO add your handling code here:
+        jBCriarContaTecnico.setText("Atualizar");
+        jBCancelarTecnico.setVisible(true);
+        
+        int linha = jTableCriarEditarTecnico.getSelectedRow();
+        idEdit = (int) jTableCriarEditarTecnico.getValueAt(linha, 0);
+        TecnicoServico TECs = ServicosFactory.getTecnicoServico();
+        Tecnico t = TECs.getTecnicoById(idEdit);
+        jNomeTecnico.setText(t.getNome());
+        jEmailTecnico.setText(t.getEmail());
+        jCPFTecnico.setText(t.getCPF());
+        jTelefoneTecnico.setText(t.getTelefone());
+        jUsuarioTecnico.setText(t.getUsuarioTec());
+        jSenhaTecnico.setText(t.getSenha());
     }//GEN-LAST:event_jBEditarContaTecnicoActionPerformed
+
+    private void jBCancelarTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarTecnicoActionPerformed
+        // TODO add your handling code here:
+        limparCamposContaTec();
+        jBCriarContaTecnico.setText("Criar");
+    }//GEN-LAST:event_jBCancelarTecnicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -338,6 +426,7 @@ public class CriarContaTecnico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBCancelarTecnico;
     private javax.swing.JButton jBCriarContaTecnico;
     private javax.swing.JButton jBEditarContaTecnico;
     private javax.swing.JButton jBExcluirTecnico;

@@ -207,11 +207,11 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="8" rowCount="4">
                     <Column editable="false" title="ID" type="java.lang.Integer"/>
-                    <Column editable="false" title="Data de Cria&#xe7;&#xe3;o" type="java.lang.String"/>
-                    <Column editable="false" title="Data de Finaliza&#xe7;&#xe3;o" type="java.lang.String"/>
                     <Column editable="false" title="Condi&#xe7;&#xe3;o" type="java.lang.String"/>
                     <Column editable="false" title="Descri&#xe7;&#xe3;o" type="java.lang.String"/>
                     <Column editable="false" title="LinkUnboxing" type="java.lang.String"/>
+                    <Column editable="false" title="Data de Cria&#xe7;&#xe3;o" type="java.lang.String"/>
+                    <Column editable="false" title="Data de Finaliza&#xe7;&#xe3;o" type="java.lang.String"/>
                     <Column editable="false" title="T&#xe9;cnico" type="java.lang.String"/>
                     <Column editable="false" title="Cliente" type="java.lang.String"/>
                   </Table>

@@ -142,7 +142,7 @@ public class Administrador extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Data de Criação", "Data de Finalização", "Condição", "Descrição", "LinkUnboxing", "Técnico", "Cliente"
+                "ID", "Condição", "Descrição", "LinkUnboxing", "Data de Criação", "Data de Finalização", "Técnico", "Cliente"
             }
         ) {
             Class[] types = new Class [] {

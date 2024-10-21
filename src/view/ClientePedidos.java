@@ -9,13 +9,16 @@ import javax.swing.table.DefaultTableModel;
 import model.ProjetoOS;
 import servicos.ProjetoOSServico;
 import servicos.ServicosFactory;
+import model.Cliente;
+import servicos.ClienteServico;
 
 /**
  *
  * @author 182310076
  */
 public class ClientePedidos extends javax.swing.JFrame {
-
+        
+    int idEdit;
     /**
      * Creates new form ClientePedidos
      */
