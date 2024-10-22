@@ -28,4 +28,9 @@ public class ProjetoOSServico {
     public boolean deletarProjetoOS(int IDOs) {
         return pOSDAO.deletarProjetoOS(IDOs);
     }
+    
+    public void getProjetoOSByIdCliente (int IDCliente) {
+        pOSDAO.getProjetoOSByIdCliente(IDCliente);
+    }
+    
 }

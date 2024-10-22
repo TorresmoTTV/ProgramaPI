@@ -14,7 +14,7 @@ public class ClienteDAO {
     public void cadastrarCliente(Cliente cVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "INSERT INTO Cliente (Nome, Email, Endereco, CPF, Telefone, Usuario, Senha)"
+            String sql = "INSERT INTO Cliente (Nome, Email, Endereco, CPF, Telefone, UsuarioCliente, Senha)"
                     + "VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, cVO.getNome());
@@ -124,7 +124,7 @@ public class ClienteDAO {
         Connection conexao = Conexao.getConexao();
         Cliente cliente = null;
 
-        String sql = "SELECT * FROM Cliente WHERE Usuario = ? AND Senha = ?";
+        String sql = "SELECT * FROM Cliente WHERE UsuarioCliente = ? AND Senha = ?";
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, login);

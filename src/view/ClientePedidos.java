@@ -19,6 +19,7 @@ import servicos.ClienteServico;
 public class ClientePedidos extends javax.swing.JFrame {
         
     int idEdit;
+    
     /**
      * Creates new form ClientePedidos
      */
