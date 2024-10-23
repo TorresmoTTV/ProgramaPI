@@ -65,11 +65,11 @@ public class ProjetoOSDAO {
             Connection con = Conexao.getConexao();
             String sql = "Update Projeto_OrdemdeServico SET Condicao = ?, Descricao = ?, LinkUnboxing = ?, DataInicio = ?, DataFim = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, "Condicao");
-            pst.setString(2, "Descricao");
-            pst.setString(3, "LinkUnboxing");
-            pst.setString(4, "DataInicio");
-            pst.setString(5, "DataFim");
+            pst.setString(1, pVO.getCondicao());
+            pst.setString(2, pVO.getDescricao());
+            pst.setString(3, pVO.getLinkUnboxing());
+            pst.setString(4, pVO.getDataInicio());
+            pst.setString(5, pVO.getDataFim());
 
             pst.executeUpdate();
         } catch (SQLException e) {
@@ -106,6 +106,7 @@ public class ProjetoOSDAO {
                 p.setIDOs(rs.getInt("IDOs"));
                 p.setCondicao(rs.getString("Condicao"));
                 p.setDescricao(rs.getString("Descricao"));
+                p.setLinkUnboxing(rs.getString("LinkUnboxing"));
                 p.setDataInicio(rs.getString("DataInicio"));
                 p.setDataFim(rs.getString("DataFim"));
             }

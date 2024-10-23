@@ -14,8 +14,8 @@ public class TecnicoDAO {
     public void cadastrarTecnico(Tecnico tVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "INSERT INTO Tecnico (Nome, Telefone, Email, CPF, UsuarioTec, Senha)"
-                    + "(?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Tecnico (Nome, Telefone, Email, CPF, UsuarioTec, Senha) "
+                    + "VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, tVO.getNome());
             pst.setString(2, tVO.getTelefone());
@@ -23,6 +23,9 @@ public class TecnicoDAO {
             pst.setString(4, tVO.getCPF());
             pst.setString(5, tVO.getUsuarioTec());
             pst.setString(6, tVO.getSenha());
+            pst.execute();
+            
+            System.out.println("Tecnico cadastrado com sucesso.");
         } catch (SQLException e) {
             System.out.println("Erro ao cadastrar Tecnico.\n" + e.getMessage());
         }
@@ -65,6 +68,7 @@ public class TecnicoDAO {
             pst.setString(4, tVO.getCPF());
             pst.setString(5, tVO.getUsuarioTec());
             pst.setString(6, tVO.getSenha());
+            pst.setInt(7, tVO.getIDTecnico());
 
             pst.executeUpdate();
         } catch (SQLException e) {

@@ -21,7 +21,7 @@ public class CriarContaTecnico extends javax.swing.JFrame {
      * Creates new form CriarConta
      */
     int idEdit;
-            
+
     public CriarContaTecnico() {
         initComponents();
         addRowToTableTEC();
@@ -312,11 +312,11 @@ public class CriarContaTecnico extends javax.swing.JFrame {
 
     private void jBExcluirTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirTecnicoActionPerformed
         int linha = jTableCriarEditarTecnico.getSelectedRow();
-        int id = (int) jTableCriarEditarTecnico.getValueAt(linha,0);
-        String nome = (String) jTableCriarEditarTecnico.getValueAt(linha,1);
+        int id = (int) jTableCriarEditarTecnico.getValueAt(linha, 0);
+        String nome = (String) jTableCriarEditarTecnico.getValueAt(linha, 1);
         Object[] btnMSG = {"Sim", "Não"};
         int resp = JOptionPane.showOptionDialog(this, "Deseja realmente deletar " + nome, ".: Deletar :.",
-                    JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, btnMSG, btnMSG[0]);
+                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, btnMSG, btnMSG[0]);
         if (resp == 0) {
             TecnicoServico TECs = ServicosFactory.getTecnicoServico();
             TECs.deletarTecnico(id);
@@ -329,21 +329,26 @@ public class CriarContaTecnico extends javax.swing.JFrame {
 
     private void jBCriarContaTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCriarContaTecnicoActionPerformed
         if (jBCriarContaTecnico.getText().equals("Criar")) {
-        if (validaInputs()) {
-            Tecnico t = new Tecnico();
-            t.setNome(jNomeTecnico.getText());
-            t.setEmail(jEmailTecnico.getText());
-            t.setCPF(jCPFTecnico.getText());
-            t.setTelefone(jTelefoneTecnico.getText());
-            t.setUsuarioTec(jUsuarioTecnico.getText());
-            t.setSenha(jSenhaTecnico.getName());// verificar encriptação senha
+            if (validaInputs()) {
+                Tecnico t = new Tecnico();
+                t.setNome(jNomeTecnico.getText());
+                t.setEmail(jEmailTecnico.getText());
+                t.setCPF(jCPFTecnico.getText());
+                t.setTelefone(jTelefoneTecnico.getText());
+                t.setUsuarioTec(jUsuarioTecnico.getText());
+                t.setSenha(jSenhaTecnico.getText());// verificar encriptação senha
 
-            TecnicoServico TecnicoS = ServicosFactory.getTecnicoServico();
-            TecnicoS.cadastrarTecnico(t);
-            addRowToTableTEC();
-            limparCamposContaTec();
-            //janela para aviso que criou conta
-        }
+                TecnicoServico TecnicoS = ServicosFactory.getTecnicoServico();
+                try {
+                    TecnicoS.cadastrarTecnico(t);
+                    javax.swing.JOptionPane.showMessageDialog(this, "Conta criada com sucesso!", "Sucesso", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception e) {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Erro ao criar a conta: " + e.getMessage(), "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+                }
+                addRowToTableTEC();
+                limparCamposContaTec();
+                //janela para aviso que criou conta
+            }
         } else {
             Tecnico t = new Tecnico();
             t.setIDTecnico(idEdit);
@@ -352,7 +357,7 @@ public class CriarContaTecnico extends javax.swing.JFrame {
             t.setCPF(jCPFTecnico.getText());
             t.setTelefone(jTelefoneTecnico.getText());
             t.setUsuarioTec(jUsuarioTecnico.getText());
-            t.setSenha(jSenhaTecnico.getName());
+            t.setSenha(jSenhaTecnico.getText());
             TecnicoServico TECs = ServicosFactory.getTecnicoServico();
             TECs.atualizaTecnico(t);
             addRowToTableTEC();
@@ -370,7 +375,7 @@ public class CriarContaTecnico extends javax.swing.JFrame {
         // TODO add your handling code here:
         jBCriarContaTecnico.setText("Atualizar");
         jBCancelarTecnico.setVisible(true);
-        
+
         int linha = jTableCriarEditarTecnico.getSelectedRow();
         idEdit = (int) jTableCriarEditarTecnico.getValueAt(linha, 0);
         TecnicoServico TECs = ServicosFactory.getTecnicoServico();

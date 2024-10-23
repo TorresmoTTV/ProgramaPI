@@ -43,7 +43,7 @@ public class ClientePedidos extends javax.swing.JFrame {
             rowData[2] = ProjetoOS.getDescricao();
             rowData[3] = ProjetoOS.getDataInicio();
             rowData[4] = ProjetoOS.getDataFim();
-            rowData[6] = ProjetoOS.getLinkUnboxing();
+            rowData[5] = ProjetoOS.getLinkUnboxing();
             model.addRow(rowData);
         }
     }
@@ -60,8 +60,7 @@ public class ClientePedidos extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablePedidoCliente = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jBEditarContaCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,6 +102,13 @@ public class ClientePedidos extends javax.swing.JFrame {
 
         jLabel1.setText("Pedidos:");
 
+        jBEditarContaCliente.setText("Editar Conta");
+        jBEditarContaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEditarContaClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,23 +120,20 @@ public class ClientePedidos extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(311, 311, 311)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addComponent(jBEditarContaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addComponent(jBEditarContaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                 .addGap(36, 36, 36))
         );
-
-        jMenu1.setText("Editar Cadastro");
-        jMenuBar1.add(jMenu1);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,11 +143,17 @@ public class ClientePedidos extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBEditarContaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarContaClienteActionPerformed
+        // TODO add your handling code here:
+        EditarConta edc = new EditarConta();
+        edc.setVisible(true);
+    }//GEN-LAST:event_jBEditarContaClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,9 +191,8 @@ public class ClientePedidos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBEditarContaCliente;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTablePedidoCliente;

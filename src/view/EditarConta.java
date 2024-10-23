@@ -204,8 +204,6 @@ public class EditarConta extends javax.swing.JFrame {
 
     private void jBSairedicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairedicaoActionPerformed
         // TODO add your handling code here:
-        Principal Principal = new Principal();
-        Principal.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jBSairedicaoActionPerformed
 
