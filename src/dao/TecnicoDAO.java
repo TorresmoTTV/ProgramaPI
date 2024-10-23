@@ -53,6 +53,7 @@ public class TecnicoDAO {
         return tecnicoS;
     }
 //(Nome, Telefone, Email, CPF, Usuario, Senha)
+
     public void atualizarTecnico(Tecnico tVO) {
         try {
             Connection con = Conexao.getConexao();
@@ -110,5 +111,31 @@ public class TecnicoDAO {
                     + e.getMessage());
         }
         return t;
+    }
+
+    public Tecnico buscarTecnicoPorLoginSenha(String login, String senha) throws SQLException {
+        Connection conexao = Conexao.getConexao();
+        Tecnico tecnico = null;
+
+        String sql = "SELECT * FROM Tecnico WHERE UsuarioTec = ? AND Senha = ?";
+
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, login);
+            stmt.setString(2, senha);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                // Cria o objeto Cliente e define seus atributos
+                tecnico = new Tecnico();
+                tecnico.setIDTecnico(rs.getInt("IDTecnico"));
+                tecnico.setNome(rs.getString("Nome"));
+                // Outras informações do cliente...
+                tecnico.setNome(rs.getString("Nome"));
+                System.out.println("Técnico encontrado: " + tecnico.getNome());
+            } else {
+                System.out.println("Técnico não encontrado.");
+            }
+        }
+        return tecnico;
     }
 }

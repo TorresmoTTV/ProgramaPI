@@ -97,4 +97,26 @@ public class AdministradorDAO {
         }
         return a;
     }
+
+    public Administrador buscarAdministradorPorLoginSenha(String login, String senha) throws SQLException {
+        Connection conexao = Conexao.getConexao();
+        Administrador administrador = null;
+
+        String sql = "SELECT * FROM Administrador WHERE UsuarioAdmin = ? AND Senha = ?";
+
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, login);
+            stmt.setString(2, senha);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                administrador = new Administrador();
+                administrador.setIDAdmin(rs.getInt("IDAdmin"));
+                System.out.println("Administrador encontrado: " + administrador.getIDAdmin());
+            } else {
+                System.out.println("Administrador não encontrado.");
+            }
+        }
+        return administrador;
+    }
 }

@@ -5,6 +5,11 @@
  */
 package view;
 
+import servicos.AdminTecnicoServico;
+import servicos.ServicosFactory;
+import model.Administrador;
+import model.Tecnico;
+
 /**
  *
  * @author 182310076
@@ -112,6 +117,31 @@ public class AdminTecnico extends javax.swing.JFrame {
 
     private void jBLogarAdminTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLogarAdminTecnicoActionPerformed
         // TODO add your handling code here:
+        String login = jTextLogin.getText();
+        String senha = new String(jSenha.getPassword());
+
+        try {
+            AdminTecnicoServico servico = ServicosFactory.getAdminTecnico();
+            Object usuario = servico.loginUnico(login, senha);
+
+            if (usuario instanceof Administrador) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Login realizado como Administrador!", "Sucesso", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                // Abra a interface para Administrador
+                AdministradorView janelaa = new AdministradorView();
+                janelaa.setVisible(true);
+                setVisible(false);
+            } else if (usuario instanceof Tecnico) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Login realizado como Técnico!", "Sucesso", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                // Abra a interface para Técnico
+                TecnicoView janelat = new TecnicoView();
+                janelat.setVisible(true);
+                setVisible(false);
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Usuário ou senha inválidos!", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao realizar login: " + e.getMessage());
+        }
     }//GEN-LAST:event_jBLogarAdminTecnicoActionPerformed
 
     private void jBVoltarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVoltarClienteActionPerformed

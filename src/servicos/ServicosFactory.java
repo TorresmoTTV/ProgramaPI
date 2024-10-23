@@ -24,4 +24,10 @@ public class ServicosFactory {
     public static ProjetoOSServico getProjetoOSServico(){
         return ProjetoOSServicoS;
     }
+    
+    private static AdminTecnicoServico AdminTecnicoS = new AdminTecnicoServico();
+    
+    public static AdminTecnicoServico getAdminTecnico(){
+        return AdminTecnicoS;
+    }
 }
