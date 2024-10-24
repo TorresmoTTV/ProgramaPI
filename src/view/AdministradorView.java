@@ -7,9 +7,11 @@ package view;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Cliente;
 
 import model.ProjetoOS;
 import model.Tecnico;
+import servicos.ClienteServico;
 import servicos.GeradorRelatorioPDF;
 import servicos.ProjetoOSServico;
 import servicos.ServicosFactory;
@@ -28,6 +30,7 @@ public class AdministradorView extends javax.swing.JFrame {
         initComponents();
         addRowToTablePOS();
         addRowToTableTEC();
+        addRowToTableCli();
     }
 
     private void addRowToTablePOS() {
@@ -72,6 +75,25 @@ public class AdministradorView extends javax.swing.JFrame {
         }
     }
 
+    private void addRowToTableCli() {
+        DefaultTableModel model = (DefaultTableModel) jTableCliente.getModel();
+        model.getDataVector().removeAllElements();// remove todas as linhas
+        model.fireTableDataChanged();
+        Object rowData[] = new Object[7];
+        ClienteServico c = ServicosFactory.getClienteServico();
+        for (Cliente clientes : c.listaClientes()) {
+            rowData[0] = clientes.getIDUsuario();
+            rowData[1] = clientes.getNome();
+            rowData[2] = clientes.getTelefone();
+            rowData[3] = clientes.getEmail();
+            rowData[4] = clientes.getEndereco();
+            rowData[5] = clientes.getCPF();
+            rowData[6] = clientes.getUsuarioCliente();
+            model.addRow(rowData);
+        }
+        
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,6 +110,10 @@ public class AdministradorView extends javax.swing.JFrame {
         jTablePOS = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jAtualizarAdministrador = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableCliente = new javax.swing.JTable();
         jMenuAdministrador = new javax.swing.JMenuBar();
         jMenuCriarAdministrador = new javax.swing.JMenu();
         jMenuItemTecnico = new javax.swing.JMenuItem();
@@ -95,6 +121,7 @@ public class AdministradorView extends javax.swing.JFrame {
         jMenuCriarRelatorio = new javax.swing.JMenu();
         jMenuItemRelatorioPOS = new javax.swing.JMenuItem();
         jMenuItemRelatorioTec = new javax.swing.JMenuItem();
+        jMenuItemRelatorioCLI = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,7 +169,7 @@ public class AdministradorView extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Condição", "Descrição", "LinkUnboxing", "Data de Criação", "Data de Finalização", "Técnico", "Cliente"
+                "ID", "Condição", "Descrição", "LinkUnboxing", "Data de Criação", "Data de Finalização", "Cliente", "Técnico"
             }
         ) {
             Class[] types = new Class [] {
@@ -176,26 +203,79 @@ public class AdministradorView extends javax.swing.JFrame {
 
         jLabel3.setText("Técnicos:");
 
+        jAtualizarAdministrador.setText("Atualizar");
+        jAtualizarAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAtualizarAdministradorActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Clientes:");
+
+        jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID Cliente", "Nome", "Telefone", "Email", "Endereco", "CPF", "UsuarioCliente"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTableCliente);
+        if (jTableCliente.getColumnModel().getColumnCount() > 0) {
+            jTableCliente.getColumnModel().getColumn(0).setResizable(false);
+            jTableCliente.getColumnModel().getColumn(1).setResizable(false);
+            jTableCliente.getColumnModel().getColumn(2).setResizable(false);
+            jTableCliente.getColumnModel().getColumn(3).setResizable(false);
+            jTableCliente.getColumnModel().getColumn(5).setResizable(false);
+            jTableCliente.getColumnModel().getColumn(6).setResizable(false);
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(336, 336, 336)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
-                            .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jAtualizarAdministrador))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(313, 313, 313)
                                 .addComponent(jLabel1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(353, 353, 353)
+                                .addGap(331, 331, 331)
                                 .addComponent(jLabel3)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -205,11 +285,17 @@ public class AdministradorView extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jAtualizarAdministrador)
+                .addContainerGap())
         );
 
         jMenuCriarAdministrador.setText("Criar/Editar/Deletar");
@@ -247,6 +333,9 @@ public class AdministradorView extends javax.swing.JFrame {
             }
         });
         jMenuCriarRelatorio.add(jMenuItemRelatorioTec);
+
+        jMenuItemRelatorioCLI.setText("Clientes");
+        jMenuCriarRelatorio.add(jMenuItemRelatorioCLI);
 
         jMenuCriarAdministrador.add(jMenuCriarRelatorio);
 
@@ -302,6 +391,13 @@ public class AdministradorView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemRelatorioTecActionPerformed
 
+    private void jAtualizarAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAtualizarAdministradorActionPerformed
+        // TODO add your handling code here:
+        addRowToTablePOS();
+        addRowToTableTEC();
+        addRowToTableCli();
+    }//GEN-LAST:event_jAtualizarAdministradorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -339,18 +435,23 @@ public class AdministradorView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jAtualizarAdministrador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuAdministrador;
     private javax.swing.JMenu jMenuCriarAdministrador;
     private javax.swing.JMenu jMenuCriarRelatorio;
     private javax.swing.JMenuItem jMenuItemProjetoOS;
+    private javax.swing.JMenuItem jMenuItemRelatorioCLI;
     private javax.swing.JMenuItem jMenuItemRelatorioPOS;
     private javax.swing.JMenuItem jMenuItemRelatorioTec;
     private javax.swing.JMenuItem jMenuItemTecnico;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPaneListaProjeto;
+    private javax.swing.JTable jTableCliente;
     private javax.swing.JTable jTablePOS;
     private javax.swing.JTable jTableTecnicos;
     // End of variables declaration//GEN-END:variables

@@ -60,6 +60,7 @@ public class TecnicoView extends javax.swing.JFrame {
         jScrollPaneListaProjeto = new javax.swing.JScrollPane();
         jTablePOS = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jBAtualizar = new javax.swing.JButton();
         jMenuAdministrador = new javax.swing.JMenuBar();
         jMenuCriarAdministrador = new javax.swing.JMenu();
         jMenuItemProjetoOS = new javax.swing.JMenuItem();
@@ -106,6 +107,13 @@ public class TecnicoView extends javax.swing.JFrame {
 
         jLabel1.setText("Projeto/Ordem de Serviços:");
 
+        jBAtualizar.setText("Atualizar");
+        jBAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAtualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -118,7 +126,10 @@ public class TecnicoView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(313, 313, 313)
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jBAtualizar)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -128,7 +139,9 @@ public class TecnicoView extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jBAtualizar)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jMenuCriarAdministrador.setText("Criar/Editar");
@@ -163,7 +176,13 @@ public class TecnicoView extends javax.swing.JFrame {
         // TODO add your handling code here:
         GerenciaPOS GPOS = new GerenciaPOS();
         GPOS.setVisible(true);
+        
     }//GEN-LAST:event_jMenuItemProjetoOSActionPerformed
+
+    private void jBAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAtualizarActionPerformed
+        // TODO add your handling code here:
+        addRowToTable();
+    }//GEN-LAST:event_jBAtualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,6 +223,7 @@ public class TecnicoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAtualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuAdministrador;
     private javax.swing.JMenu jMenuCriarAdministrador;

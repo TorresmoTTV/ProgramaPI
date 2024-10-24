@@ -90,13 +90,14 @@ public class ProjetoOSDAO {
     public void atualizarProjetoOS(ProjetoOS pVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "Update Projeto_OrdemdeServico SET Condicao = ?, Descricao = ?, LinkUnboxing = ?, DataInicio = ?, DataFim = ?";
+            String sql = "Update Projeto_OrdemdeServico SET Condicao = ?, Descricao = ?, LinkUnboxing = ?, DataInicio = ?, DataFim = ? where IDOs = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, pVO.getCondicao());
             pst.setString(2, pVO.getDescricao());
             pst.setString(3, pVO.getLinkUnboxing());
             pst.setString(4, pVO.getDataInicio());
             pst.setString(5, pVO.getDataFim());
+            pst.setInt(6, pVO.getIDOs());
 
             pst.executeUpdate();
         } catch (SQLException e) {

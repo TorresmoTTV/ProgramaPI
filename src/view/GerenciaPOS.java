@@ -21,7 +21,7 @@ public class GerenciaPOS extends javax.swing.JFrame {
     /**
      * Creates new form GerenciaPOS
      */
-    int idEdit;
+    private int idEdit;
 
     public GerenciaPOS() {
         initComponents();
@@ -108,7 +108,7 @@ public class GerenciaPOS extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Condição", "Descrição", "Unboxing", "Data de Criação", "Data de Finalização", "Técnico", "Cliente"
+                "ID", "Condição", "Descrição", "Unboxing", "Data de Criação", "Data de Finalização", "Cliente", "Técnico"
             }
         ) {
             Class[] types = new Class [] {
@@ -140,13 +140,13 @@ public class GerenciaPOS extends javax.swing.JFrame {
 
         jLabel2.setText("Data de Finalização:");
 
-        jLabel3.setText("Técnico:");
+        jLabel3.setText("Cliente:");
 
         jLabel4.setText("Condição:");
 
         jLabel5.setText("Descrição:");
 
-        jLabel6.setText("Cliente:");
+        jLabel6.setText("Técnico:");
 
         jTextFieldDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
