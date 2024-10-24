@@ -74,7 +74,7 @@ public class TecnicoView extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Data de Criação", "Data de Finalização", "Condição", "Descrição", "Link Unboxing", "Técnico", "Cliente"
+                "ID", "Data de Criação", "Data de Finalização", "Condição", "Descrição", "Link Unboxing", "Cliente", "Técnico"
             }
         ) {
             Class[] types = new Class [] {

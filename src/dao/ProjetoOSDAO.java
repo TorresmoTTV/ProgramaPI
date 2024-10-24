@@ -59,6 +59,33 @@ public class ProjetoOSDAO {
         return projetoOSs;
     }
 
+    public ArrayList<ProjetoOS> getProjetoOSByCliente(int idCliente) {
+        ArrayList<ProjetoOS> projetoOSs = new ArrayList<>();
+
+        try {
+            Connection con = Conexao.getConexao();
+            String sql = "SELECT * FROM projeto_ordemdeservico WHERE fk_Cliente_IDUsuario = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, idCliente);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                ProjetoOS p = new ProjetoOS();
+                p.setIDOs(rs.getInt("IDOs"));
+                p.setCondicao(rs.getString("Condicao"));
+                p.setDescricao(rs.getString("Descricao"));
+                p.setLinkUnboxing(rs.getString("LinkUnboxing"));
+                p.setDataInicio(rs.getString("DataInicio"));
+                p.setDataFim(rs.getString("DataFim"));
+                p.setfk_Cliente_IDUsuario(rs.getInt("fk_Cliente_IDUsuario"));
+                projetoOSs.add(p);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar Projeto / Ordem de Servico.\n" + e.getMessage());
+        }
+        return projetoOSs;
+    }
+    
     // Condicao, Descricao, LinkUnbonxing, DataInicio, DataFim
     public void atualizarProjetoOS(ProjetoOS pVO) {
         try {

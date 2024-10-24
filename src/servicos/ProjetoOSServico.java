@@ -16,6 +16,10 @@ public class ProjetoOSServico {
     public ArrayList<ProjetoOS> listaProjetoOSs() {
         return pOSDAO.getProjetoOS();
     }
+    
+    public ArrayList<ProjetoOS> listaProjetoOSsPorCliente(int idCliente) {
+        return pOSDAO.getProjetoOSByCliente(idCliente);
+    }
 
     public ProjetoOS getProjetoOSById(int IDOs) {
         return pOSDAO.getProjetoOSById(IDOs);

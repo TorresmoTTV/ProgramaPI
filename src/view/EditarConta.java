@@ -8,6 +8,7 @@ package view;
 import model.Cliente;
 import servicos.ClienteServico;
 import servicos.ServicosFactory;
+import model.LoginCliente;
 
 /**
  *
@@ -22,9 +23,24 @@ public class EditarConta extends javax.swing.JFrame {
      */
     public EditarConta() {
         initComponents();
+        EditarContaCliente();
     }
 
 
+    public void EditarContaCliente() {
+        int idCliente = LoginCliente.getInstancia().getIdCliente();
+        ClienteServico cs = ServicosFactory.getClienteServico();
+        Cliente c = cs.getClienteById(idCliente);
+        
+        jNomeCliente.setText(c.getNome());
+        jEmailCliente.setText(c.getEmail());
+        jCPFCliente.setText(c.getCPF());
+        jEndrecoCliente.setText(c.getEndereco());
+        jTelefoneCliente.setText(c.getTelefone());
+        jUsuarioCliente.setText(c.getUsuarioCliente());
+        jSenhaCliente.setText(c.getSenha());
+    }
+    
     public boolean validaInputs() {
         return true;
     }

@@ -10,6 +10,7 @@ import model.ProjetoOS;
 import servicos.ProjetoOSServico;
 import servicos.ServicosFactory;
 import model.Cliente;
+import model.LoginCliente;
 import servicos.ClienteServico;
 
 /**
@@ -25,19 +26,21 @@ public class ClientePedidos extends javax.swing.JFrame {
      */
     public ClientePedidos() {
         initComponents();
-        addRowToTable();
+        int idCliente = LoginCliente.getInstancia().getIdCliente();
+        addRowToTable(idCliente);
     }
     
-    private void addRowToTable() {
+    private void addRowToTable(int idCliente) {
         //pega a modelagem da tabela na interface gráfica
         DefaultTableModel model = (DefaultTableModel) jTablePedidoCliente.getModel();
         model.getDataVector().removeAllElements();// remove todas as linhas
         model.fireTableDataChanged();
         // cria vetor de 7 posições que corresponde as colunas da tabela
-        Object rowData[] = new Object[7];
+        
         ProjetoOSServico posS = ServicosFactory.getProjetoOSServico();
         // percorrer lista e popula vetor e add vetor a tabela
-        for (ProjetoOS ProjetoOS : posS.listaProjetoOSs()) {
+        for (ProjetoOS ProjetoOS : posS.listaProjetoOSsPorCliente(idCliente)) {
+            Object rowData[] = new Object[6];
             rowData[0] = ProjetoOS.getIDOs();
             rowData[1] = ProjetoOS.getCondicao();
             rowData[2] = ProjetoOS.getDescricao();
