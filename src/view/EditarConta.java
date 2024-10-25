@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import model.Cliente;
 import servicos.ClienteServico;
 import servicos.ServicosFactory;
@@ -15,7 +17,7 @@ import model.LoginCliente;
  * @author 182310076
  */
 public class EditarConta extends javax.swing.JFrame {
-    
+
     int idEdit;
 
     /**
@@ -26,12 +28,11 @@ public class EditarConta extends javax.swing.JFrame {
         EditarContaCliente();
     }
 
-
     public void EditarContaCliente() {
         int idCliente = LoginCliente.getInstancia().getIdCliente();
         ClienteServico cs = ServicosFactory.getClienteServico();
         Cliente c = cs.getClienteById(idCliente);
-        
+
         jNomeCliente.setText(c.getNome());
         jEmailCliente.setText(c.getEmail());
         jCPFCliente.setText(c.getCPF());
@@ -40,7 +41,7 @@ public class EditarConta extends javax.swing.JFrame {
         jUsuarioCliente.setText(c.getUsuarioCliente());
         jSenhaCliente.setText(c.getSenha());
     }
-    
+
     public boolean validaInputs() {
         return true;
     }
@@ -73,6 +74,7 @@ public class EditarConta extends javax.swing.JFrame {
         jBSairedicao = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jEndrecoCliente = new javax.swing.JTextField();
+        jBDeletarCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,6 +122,14 @@ public class EditarConta extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel8.setText("Endereço:");
 
+        jBDeletarCliente.setBackground(new java.awt.Color(153, 0, 0));
+        jBDeletarCliente.setText("Deletar Cliente");
+        jBDeletarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDeletarClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -128,25 +138,15 @@ public class EditarConta extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(236, 236, 236)
-                                        .addComponent(jLabel1))
-                                    .addComponent(jBAtualizarContaCliente))
-                                .addGap(193, 193, 193)
-                                .addComponent(jBSairedicao))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSenhaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(112, Short.MAX_VALUE))
+                        .addGap(236, 236, 236)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jBAtualizarContaCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBDeletarCliente))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jUsuarioCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -154,15 +154,23 @@ public class EditarConta extends javax.swing.JFrame {
                                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                                     .addComponent(jEmailCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                                     .addComponent(jCPFCliente)
                                     .addComponent(jTelefoneCliente)
-                                    .addComponent(jEndrecoCliente))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(jEndrecoCliente)
+                                    .addComponent(jUsuarioCliente, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSenhaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(193, 193, 193)
+                .addComponent(jBSairedicao)
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,23 +192,24 @@ public class EditarConta extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jEndrecoCliente))
+                    .addComponent(jEndrecoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTelefoneCliente))
-                .addGap(7, 7, 7)
+                    .addComponent(jTelefoneCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jUsuarioCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jUsuarioCliente))
-                .addGap(7, 7, 7)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSenhaCliente)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(76, 76, 76)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSenhaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
+                .addGap(74, 74, 74)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBSairedicao)
-                    .addComponent(jBAtualizarContaCliente))
+                    .addComponent(jBAtualizarContaCliente)
+                    .addComponent(jBDeletarCliente))
                 .addGap(47, 47, 47))
         );
 
@@ -226,7 +235,7 @@ public class EditarConta extends javax.swing.JFrame {
     private void jBAtualizarContaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAtualizarContaClienteActionPerformed
         if (validaInputs()) {
             Cliente c = new Cliente();
-            
+
             c.setIDUsuario(idEdit);
             c.setNome(jNomeCliente.getText().toUpperCase());
             c.setEmail(jEmailCliente.getText());
@@ -235,7 +244,7 @@ public class EditarConta extends javax.swing.JFrame {
             c.setTelefone(jTelefoneCliente.getText());
             c.setUsuarioCliente(jUsuarioCliente.getText());
             c.setSenha(jSenhaCliente.getText());// verificar encriptação senha
-            
+
             ClienteServico usuarioS = ServicosFactory.getClienteServico();
             usuarioS.cadastrarCliente(c);
             //janela para aviso que criou conta
@@ -245,6 +254,24 @@ public class EditarConta extends javax.swing.JFrame {
     private void jCPFClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCPFClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCPFClienteActionPerformed
+
+    private void jBDeletarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeletarClienteActionPerformed
+        // TODO add your handling code here:
+        // erro com a tabela do projeto_ordemdeservico porque ele possui a chave estrangeira
+        int idCliente = LoginCliente.getInstancia().getIdCliente();
+        String nome = (String) jNomeCliente.getText();
+        Object[] btnMSG = {"Sim", "Não"};
+        int resp = JOptionPane.showOptionDialog(this, "Deseja realmente deletar " + nome, ".: Deletar :.",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, btnMSG, btnMSG[0]);
+        if (resp == 0) {
+            ClienteServico CLIs = ServicosFactory.getClienteServico();
+            CLIs.deletarCliente(idCliente);
+
+            JOptionPane.showMessageDialog(this, "Técnico " + nome + " deletado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Ok, delete cancelado com sucesso!");
+        }
+    }//GEN-LAST:event_jBDeletarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,6 +313,7 @@ public class EditarConta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAtualizarContaCliente;
+    private javax.swing.JButton jBDeletarCliente;
     private javax.swing.JButton jBSairedicao;
     private javax.swing.JTextField jCPFCliente;
     private javax.swing.JTextField jEmailCliente;

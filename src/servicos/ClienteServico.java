@@ -27,8 +27,8 @@ public class ClienteServico {
         cDAO.atualizarCliente(cVO);
     }
 
-    public boolean deletarCliente(int IDCliente) {
-        return cDAO.deletarCliente(IDCliente);
+    public void deletarCliente(int IDCliente) {
+        cDAO.deletarCliente(IDCliente);
     }
 
     public Cliente buscarClientePorLoginSenha(String login, String senha) throws SQLException {
@@ -48,4 +48,14 @@ public class ClienteServico {
         return cliente;
     }
 
+    public void deletarClientePorLogin(String login, String senha) throws SQLException {
+        Cliente cliente = cDAO.buscarClientePorLoginSenha(login, senha); // Primeiro, busca o cliente pelo login
+
+        if (cliente != null) {
+            deletarCliente(cliente.getIDUsuario()); // Chama o método de deletar por ID
+            System.out.println("Cliente deletado com sucesso!");
+        } else {
+            System.out.println("Cliente não encontrado com o login fornecido.");
+        }
+    }
 }

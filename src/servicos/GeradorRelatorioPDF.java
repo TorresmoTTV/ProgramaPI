@@ -9,9 +9,11 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import dao.ClienteDAO;
 
 import dao.ProjetoOSDAO;
 import dao.TecnicoDAO;
+import model.Cliente;
 import model.ProjetoOS;
 import model.Tecnico;
 
@@ -79,5 +81,36 @@ public class GeradorRelatorioPDF {
 
         documentt.close();
 
+    }
+
+    public void gerarRelatorioClientes() throws FileNotFoundException, DocumentException {
+        ClienteDAO clienteDAO = new ClienteDAO();
+        List<Cliente> clientes = clienteDAO.getClientes();
+
+        Document documentt = new Document();
+
+        File diretoriot = new File("C:\\Relatorios\\Clientes");
+        if (!diretoriot.exists()) {
+            diretoriot.mkdirs();
+        }
+        PdfWriter.getInstance(documentt, new FileOutputStream("C:\\Relatorios\\Clientes\\Relatorio_Clientes.pdf"));
+
+        documentt.open();
+        documentt.add(new Paragraph("Relatório de Clientes"));
+        documentt.add(new Paragraph(" "));
+        
+        for (Cliente cli : clientes) {
+            documentt.add(new Paragraph("ID do Cliente: " + cli.getIDUsuario()));
+            documentt.add(new Paragraph("Nome do Cliente: " + cli.getNome()));
+            documentt.add(new Paragraph("E-mail do Cliente: " + cli.getEmail()));
+            documentt.add(new Paragraph("Endereço: " + cli.getEndereco()));
+            documentt.add(new Paragraph("CPF: " + cli.getCPF()));
+            documentt.add(new Paragraph("Telefone: " + cli.getTelefone()));
+            documentt.add(new Paragraph("Usuário do cliente: " + cli.getUsuarioCliente()));
+            documentt.add(new Paragraph(" "));
+        }
+        
+        documentt.close();
+        
     }
 }

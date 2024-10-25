@@ -91,7 +91,7 @@ public class AdministradorView extends javax.swing.JFrame {
             rowData[6] = clientes.getUsuarioCliente();
             model.addRow(rowData);
         }
-        
+
     }
 
     /**
@@ -114,6 +114,7 @@ public class AdministradorView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableCliente = new javax.swing.JTable();
+        jBSairAdministrador = new javax.swing.JButton();
         jMenuAdministrador = new javax.swing.JMenuBar();
         jMenuCriarAdministrador = new javax.swing.JMenu();
         jMenuItemTecnico = new javax.swing.JMenuItem();
@@ -248,6 +249,13 @@ public class AdministradorView extends javax.swing.JFrame {
             jTableCliente.getColumnModel().getColumn(6).setResizable(false);
         }
 
+        jBSairAdministrador.setText("Sair");
+        jBSairAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSairAdministradorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -258,9 +266,6 @@ public class AdministradorView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jAtualizarAdministrador))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -275,13 +280,20 @@ public class AdministradorView extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE))))
+                            .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jAtualizarAdministrador, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jBSairAdministrador, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap()
+                .addComponent(jBSairAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,7 +305,7 @@ public class AdministradorView extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jAtualizarAdministrador)
                 .addContainerGap())
         );
@@ -335,6 +347,11 @@ public class AdministradorView extends javax.swing.JFrame {
         jMenuCriarRelatorio.add(jMenuItemRelatorioTec);
 
         jMenuItemRelatorioCLI.setText("Clientes");
+        jMenuItemRelatorioCLI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRelatorioCLIActionPerformed(evt);
+            }
+        });
         jMenuCriarRelatorio.add(jMenuItemRelatorioCLI);
 
         jMenuCriarAdministrador.add(jMenuCriarRelatorio);
@@ -398,6 +415,24 @@ public class AdministradorView extends javax.swing.JFrame {
         addRowToTableCli();
     }//GEN-LAST:event_jAtualizarAdministradorActionPerformed
 
+    private void jMenuItemRelatorioCLIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioCLIActionPerformed
+        // TODO add your handling code here:
+        try {
+            GeradorRelatorioPDF GerarCLI = new GeradorRelatorioPDF();
+            GerarCLI.gerarRelatorioClientes();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenuItemRelatorioCLIActionPerformed
+
+    private void jBSairAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairAdministradorActionPerformed
+        // TODO add your handling code here:
+        Principal p = new Principal();
+        p.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jBSairAdministradorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -436,6 +471,7 @@ public class AdministradorView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAtualizarAdministrador;
+    private javax.swing.JButton jBSairAdministrador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

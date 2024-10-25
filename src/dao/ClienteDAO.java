@@ -79,17 +79,16 @@ public class ClienteDAO {
         }
     }
 
-    public boolean deletarCliente(int IDUsuario) {
+    public void deletarCliente(int IDUsuario) {
         try {
             Connection con = Conexao.getConexao();
             String sql = "delete from Cliente where IDUsuario = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, IDUsuario);
-            return pst.executeUpdate() != 0;
+            pst.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao deletar o Cliente.\n" + e.getMessage());
         }
-        return true;
     }
 
     public Cliente getClienteById(int IDUsuario) {
