@@ -61,6 +61,7 @@ public class TecnicoView extends javax.swing.JFrame {
         jTablePOS = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jBAtualizar = new javax.swing.JButton();
+        jBSairTEC = new javax.swing.JButton();
         jMenuAdministrador = new javax.swing.JMenuBar();
         jMenuCriarAdministrador = new javax.swing.JMenu();
         jMenuItemProjetoOS = new javax.swing.JMenuItem();
@@ -114,28 +115,39 @@ public class TecnicoView extends javax.swing.JFrame {
             }
         });
 
+        jBSairTEC.setText("Sair");
+        jBSairTEC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSairTECActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(313, 313, 313)
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jBAtualizar)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jBSairTEC))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addComponent(jBSairTEC, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPaneListaProjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -176,13 +188,20 @@ public class TecnicoView extends javax.swing.JFrame {
         // TODO add your handling code here:
         GerenciaPOS GPOS = new GerenciaPOS();
         GPOS.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItemProjetoOSActionPerformed
 
     private void jBAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAtualizarActionPerformed
         // TODO add your handling code here:
         addRowToTable();
     }//GEN-LAST:event_jBAtualizarActionPerformed
+
+    private void jBSairTECActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairTECActionPerformed
+        // TODO add your handling code here:
+        Principal p = new Principal();
+        p.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jBSairTECActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,6 +243,7 @@ public class TecnicoView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAtualizar;
+    private javax.swing.JButton jBSairTEC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuAdministrador;
     private javax.swing.JMenu jMenuCriarAdministrador;
