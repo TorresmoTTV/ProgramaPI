@@ -33,8 +33,8 @@ public class ProjetoOSServico {
         return pOSDAO.deletarProjetoOS(IDOs);
     }
     
-    public void getProjetoOSByIdCliente (int IDCliente) {
-        pOSDAO.getProjetoOSByIdCliente(IDCliente);
+    public void deletarProjetoOSByIdCliente (int IDCliente) {
+        pOSDAO.deletarProjetoOSByIdCliente(IDCliente);
     }
     
 }

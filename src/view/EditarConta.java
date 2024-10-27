@@ -11,6 +11,7 @@ import model.Cliente;
 import servicos.ClienteServico;
 import servicos.ServicosFactory;
 import model.LoginCliente;
+import servicos.ProjetoOSServico;
 
 /**
  *
@@ -19,6 +20,7 @@ import model.LoginCliente;
 public class EditarConta extends javax.swing.JFrame {
 
     int idEdit;
+    private int idCliente = LoginCliente.getInstancia().getIdCliente();;
 
     /**
      * Creates new form CriarConta
@@ -29,7 +31,6 @@ public class EditarConta extends javax.swing.JFrame {
     }
 
     public void EditarContaCliente() {
-        int idCliente = LoginCliente.getInstancia().getIdCliente();
         ClienteServico cs = ServicosFactory.getClienteServico();
         Cliente c = cs.getClienteById(idCliente);
 
@@ -236,7 +237,7 @@ public class EditarConta extends javax.swing.JFrame {
         if (validaInputs()) {
             Cliente c = new Cliente();
 
-            c.setIDUsuario(idEdit);
+            c.setIDUsuario(idCliente);
             c.setNome(jNomeCliente.getText().toUpperCase());
             c.setEmail(jEmailCliente.getText());
             c.setCPF(jCPFCliente.getText());
@@ -246,8 +247,13 @@ public class EditarConta extends javax.swing.JFrame {
             c.setSenha(jSenhaCliente.getText());// verificar encriptação senha
 
             ClienteServico usuarioS = ServicosFactory.getClienteServico();
-            usuarioS.cadastrarCliente(c);
-            //janela para aviso que criou conta
+            try {
+                usuarioS.atualizaCliente(c);
+                javax.swing.JOptionPane.showMessageDialog(this, "Conta atualizada com sucesso!", "Sucesso", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                setVisible(false);
+            } catch (Exception e) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Erro ao atualizar a conta: " + e.getMessage(), "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jBAtualizarContaClienteActionPerformed
 
@@ -258,16 +264,19 @@ public class EditarConta extends javax.swing.JFrame {
     private void jBDeletarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeletarClienteActionPerformed
         // TODO add your handling code here:
         // erro com a tabela do projeto_ordemdeservico porque ele possui a chave estrangeira
-        int idCliente = LoginCliente.getInstancia().getIdCliente();
         String nome = (String) jNomeCliente.getText();
         Object[] btnMSG = {"Sim", "Não"};
         int resp = JOptionPane.showOptionDialog(this, "Deseja realmente deletar " + nome, ".: Deletar :.",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, btnMSG, btnMSG[0]);
         if (resp == 0) {
+            ProjetoOSServico POCs = ServicosFactory.getProjetoOSServico();
+            POCs.deletarProjetoOSByIdCliente(idCliente);
             ClienteServico CLIs = ServicosFactory.getClienteServico();
             CLIs.deletarCliente(idCliente);
-
-            JOptionPane.showMessageDialog(this, "Técnico " + nome + " deletado com sucesso!");
+            JOptionPane.showMessageDialog(this, "Cliente " + nome + " deletado com sucesso!");
+            setVisible(false);
+            Principal p = new Principal();
+            p.setVisible(true);                    
         } else {
             JOptionPane.showMessageDialog(this, "Ok, delete cancelado com sucesso!");
         }

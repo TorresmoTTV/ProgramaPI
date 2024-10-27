@@ -62,7 +62,7 @@ public class ClienteDAO {
     public void atualizarCliente(Cliente cVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "UPDATE Cliente SET Nome = ?, Email = ?, CPF = ?, Telefone = ?, UsuarioCliente = ?, Senha = ? where IDCliente = ?";
+            String sql = "UPDATE Cliente SET Nome = ?, Email = ?, Endereco = ?, CPF = ?, Telefone = ?, UsuarioCliente = ?, Senha = ? where IDUsuario = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, cVO.getNome());
             pst.setString(2, cVO.getEmail());
@@ -71,6 +71,7 @@ public class ClienteDAO {
             pst.setString(5, cVO.getTelefone());
             pst.setString(6, cVO.getUsuarioCliente());
             pst.setString(7, cVO.getSenha());
+            pst.setInt(8, cVO.getIDUsuario());
 
             pst.executeUpdate();
         } catch (SQLException e) {

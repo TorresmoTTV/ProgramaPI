@@ -74,10 +74,8 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jBEditarContaTecnico" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jBExcluirTecnico" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jBCancelarTecnico" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="307" max="-2" attributes="0"/>
                                   <Component id="jBVoltarPaginaAdministrador" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
@@ -132,22 +130,21 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel3" alignment="0" pref="20" max="32767" attributes="0"/>
+                      <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
                       <Component id="jTelefoneTecnico" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel6" alignment="0" pref="20" max="32767" attributes="0"/>
+                      <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
                       <Component id="jUsuarioTecnico" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSenhaTecnico" alignment="0" pref="22" max="32767" attributes="0"/>
+                      <Component id="jSenhaTecnico" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jBExcluirTecnico" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jBVoltarPaginaAdministrador" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jBCriarContaTecnico" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jBEditarContaTecnico" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -228,14 +225,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCriarContaTecnicoActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="jBExcluirTecnico">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Excluir Conta"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBExcluirTecnicoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jNomeTecnico">

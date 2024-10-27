@@ -80,7 +80,6 @@ public class CriarContaTecnico extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jBCriarContaTecnico = new javax.swing.JButton();
-        jBExcluirTecnico = new javax.swing.JButton();
         jNomeTecnico = new javax.swing.JTextField();
         jEmailTecnico = new javax.swing.JTextField();
         jCPFTecnico = new javax.swing.JTextField();
@@ -120,13 +119,6 @@ public class CriarContaTecnico extends javax.swing.JFrame {
         jBCriarContaTecnico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCriarContaTecnicoActionPerformed(evt);
-            }
-        });
-
-        jBExcluirTecnico.setText("Excluir Conta");
-        jBExcluirTecnico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBExcluirTecnicoActionPerformed(evt);
             }
         });
 
@@ -223,10 +215,8 @@ public class CriarContaTecnico extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBEditarContaTecnico)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBExcluirTecnico)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBCancelarTecnico)
-                                .addGap(201, 201, 201)
+                                .addGap(307, 307, 307)
                                 .addComponent(jBVoltarPaginaAdministrador))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel1)
@@ -278,7 +268,6 @@ public class CriarContaTecnico extends javax.swing.JFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(104, 104, 104)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBExcluirTecnico)
                     .addComponent(jBVoltarPaginaAdministrador)
                     .addComponent(jBCriarContaTecnico)
                     .addComponent(jBEditarContaTecnico)
@@ -309,23 +298,6 @@ public class CriarContaTecnico extends javax.swing.JFrame {
         // TODO add your handling code here:
         setVisible(false);
     }//GEN-LAST:event_jBVoltarPaginaAdministradorActionPerformed
-
-    private void jBExcluirTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirTecnicoActionPerformed
-        int linha = jTableCriarEditarTecnico.getSelectedRow();
-        int id = (int) jTableCriarEditarTecnico.getValueAt(linha, 0);
-        String nome = (String) jTableCriarEditarTecnico.getValueAt(linha, 1);
-        Object[] btnMSG = {"Sim", "Não"};
-        int resp = JOptionPane.showOptionDialog(this, "Deseja realmente deletar " + nome, ".: Deletar :.",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, btnMSG, btnMSG[0]);
-        if (resp == 0) {
-            TecnicoServico TECs = ServicosFactory.getTecnicoServico();
-            TECs.deletarTecnico(id);
-            addRowToTableTEC();
-            JOptionPane.showMessageDialog(this, "Técnico " + nome + " deletado com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Ok, delete cancelado com sucesso!");
-        }
-    }//GEN-LAST:event_jBExcluirTecnicoActionPerformed
 
     private void jBCriarContaTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCriarContaTecnicoActionPerformed
         if (jBCriarContaTecnico.getText().equals("Criar")) {
@@ -434,7 +406,6 @@ public class CriarContaTecnico extends javax.swing.JFrame {
     private javax.swing.JButton jBCancelarTecnico;
     private javax.swing.JButton jBCriarContaTecnico;
     private javax.swing.JButton jBEditarContaTecnico;
-    private javax.swing.JButton jBExcluirTecnico;
     private javax.swing.JButton jBVoltarPaginaAdministrador;
     private javax.swing.JTextField jCPFTecnico;
     private javax.swing.JTextField jEmailTecnico;

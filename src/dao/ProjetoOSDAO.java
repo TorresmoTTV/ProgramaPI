@@ -90,14 +90,16 @@ public class ProjetoOSDAO {
     public void atualizarProjetoOS(ProjetoOS pVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "Update Projeto_OrdemdeServico SET Condicao = ?, Descricao = ?, LinkUnboxing = ?, DataInicio = ?, DataFim = ? where IDOs = ?";
+            String sql = "Update Projeto_OrdemdeServico SET Condicao = ?, Descricao = ?, LinkUnboxing = ?, DataInicio = ?, DataFim = ?, fk_Cliente_IDUsuario = ?, fk_Tecnico_IDTecnico = ? where IDOs = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, pVO.getCondicao());
             pst.setString(2, pVO.getDescricao());
             pst.setString(3, pVO.getLinkUnboxing());
             pst.setString(4, pVO.getDataInicio());
             pst.setString(5, pVO.getDataFim());
-            pst.setInt(6, pVO.getIDOs());
+            pst.setInt(6, pVO.getfk_Cliente_IDUsuario());
+            pst.setInt(7, pVO.getfk_Tecnico_IDTecnico());
+            pst.setInt(8, pVO.getIDOs());
 
             pst.executeUpdate();
         } catch (SQLException e) {
@@ -145,29 +147,17 @@ public class ProjetoOSDAO {
         return p;
     }
 
-    public ProjetoOS getProjetoOSByIdCliente(int fk_Cliente_IDUsuario) {
-        ProjetoOS p = new ProjetoOS();
-
+    public boolean deletarProjetoOSByIdCliente(int idCliente) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "SELECT * FROM Projeto_OrdemdeServico WHERE fk_Cliente_IDUsuario = ?";
+            String sql = "delete from Projeto_OrdemdeServico where fk_Cliente_IDUsuario = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setInt(1, fk_Cliente_IDUsuario);
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-                p = new ProjetoOS();
-                p.setIDOs(rs.getInt("IDOs"));
-                p.setCondicao(rs.getString("Condicao"));
-                p.setDescricao(rs.getString("Descricao"));
-                p.setDataInicio(rs.getString("DataInicio"));
-                p.setDataFim(rs.getString("DataFim"));
-            }
+            pst.setInt(1, idCliente);
+            return pst.executeUpdate() != 0;
         } catch (SQLException e) {
-            System.out.println("Erro ao buscar o Projeto / Ordem de Servico.\n"
-                    + e.getMessage());
+            System.out.println("Erro ao deletar o Projeto / Ordem de Servico.\n" + e.getMessage());
         }
-        return p;
+        return true;
     }
 
 }
