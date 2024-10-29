@@ -132,12 +132,12 @@ public class ClienteDAO {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                // Cria o objeto Cliente e define seus atributos
+                
                 cliente = new Cliente();
                 cliente.setIDUsuario(rs.getInt("IDUsuario"));
                 cliente.setNome(rs.getString("Nome"));
                 cliente.setEmail(rs.getString("Email"));
-                // Outras informações do cliente...
+                
             }
         }
 
